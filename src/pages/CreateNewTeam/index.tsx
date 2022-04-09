@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Header from '../../components/Header';
@@ -8,14 +9,16 @@ function CreateNewTeam()
 {
     return (
         <S.Container>
-            <Header>
-                TEAMS
-            </Header>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+                <Header>
+                    TEAMS
+                </Header>
+            </Link>
 
             <Team pen={true} icons={true}>
                 My Team
             </Team>
-            
+
             <ChoosePokemon />
         </S.Container>
     );

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Header from '../../components/Header';
@@ -8,9 +9,11 @@ function Teams()
 {
     return (
         <S.Container>
-            <Header>
-                CREATE NEW TEAM
-            </Header>
+            <Link to="/create-new-team" style={{ textDecoration: 'none' }}>
+                <Header>
+                    CREATE NEW TEAM
+                </Header>
+            </Link>
 
             <S.SingleTeam>
                 <Team>

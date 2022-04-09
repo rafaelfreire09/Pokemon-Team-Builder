@@ -12,6 +12,8 @@ export const Container = styled.div`
     align-items: center;
 
     padding-top: 64px;
+
+    cursor: pointer;
 `;
 
 export const Text = styled.div`
