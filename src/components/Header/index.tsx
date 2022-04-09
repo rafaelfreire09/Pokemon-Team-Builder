@@ -1,12 +1,20 @@
+import { ReactNode } from 'react';
 import * as S from './styles';
 
-function Header() 
+import Line from '../Line';
+
+interface Props
+{
+    children: ReactNode;
+}
+
+function Header({ children }: Props) 
 {
     return (
         <S.Container>
-            <S.Line/>
+            <Line color='#ffffff'/>
             <S.Text>
-                TEAMS
+                {children}
             </S.Text>
         </S.Container>
     );

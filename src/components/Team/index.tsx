@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import * as S from './styles';
 
 import PokeSlot from './PokeSlot';
@@ -5,15 +6,22 @@ import RemoveIcon from '../Icon/RemoveIcon';
 import ChooseIcon from '../Icon/ChoosenIcon';
 import PenIcon from '../Icon/PenIcon';
 
-function Team() 
+interface Props
+{
+    children: ReactNode;
+    pen?: boolean;
+    icons?: boolean;
+}
+
+function Team({ children, pen, icons }: Props) 
 {
     return (
         <S.Container>
             <S.Title>
                 <S.Text>
-                    My Team
+                    { children }
                 </S.Text>
-                <PenIcon />
+                {pen && <PenIcon />}
             </S.Title>
 
             <S.SlotTop>
@@ -28,10 +36,12 @@ function Team()
                 <PokeSlot />
             </S.SlotBottom>
 
-            <S.Icons>
-                <RemoveIcon />
-                <ChooseIcon />
-            </S.Icons>
+            {icons && 
+                <S.Icons>
+                    <RemoveIcon />
+                    <ChooseIcon />
+                </S.Icons>
+            }
         </S.Container>
     );
 }

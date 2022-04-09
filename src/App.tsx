@@ -1,17 +1,14 @@
 import * as S from './App.styles';
 
-import Header from './components/Header';
-import Team from './components/Team';
-import ChoosePokemon from './components/ChoosePokemon';
+import CreateNewTeam from './pages/CreateNewTeam';
+import Teams from './pages/Teams';
 
 function App() 
 {
     return (
         <S.Body>
             <S.Container>
-                <Header />
-                <Team />
-                <ChoosePokemon />
+                <CreateNewTeam/>
             </S.Container>
         </S.Body>
     );
