@@ -4,7 +4,9 @@ function ChoosePokemon()
 {
     return (
         <S.Container>
-            Choose 6 Pokémons:
+            <S.Text>
+                Choose 6 Pokémons:
+            </S.Text>
         </S.Container>
     );
 }

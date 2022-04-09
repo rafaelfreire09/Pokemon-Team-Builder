@@ -6,3 +6,11 @@ export const Container = styled.div`
 
     margin: 21px 40px 13px 15px;
 `;
+
+export const Text = styled.div`
+    color: #333652;
+    
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+`;

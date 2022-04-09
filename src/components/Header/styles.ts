@@ -23,8 +23,8 @@ export const Line = styled.div`
 export const Text = styled.div`
     color: #ffffff;
 
-    font-family: 'Poppins';
     font-weight: 800;
+    font-style: normal;
     font-size: 18px;
     line-height: 30px;
 `;
