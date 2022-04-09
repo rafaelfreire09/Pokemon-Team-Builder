@@ -14,3 +14,12 @@ export const Text = styled.div`
     font-weight: 800;
     font-size: 13px;
 `;
+
+export const PokeList = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-left: 20px;
+    margin-top: 20px;
+`;
