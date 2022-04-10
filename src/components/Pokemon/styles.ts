@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+interface ColorType
+{
+    color: string;
+}
+
 export const Container = styled.div`
     width: 60px;
     height: 75px;
@@ -48,14 +53,18 @@ export const Colors = styled.div`
     margin-top: 7px;
 `;
 
-export const ColorRight = styled.div`
+export const ColorRight = styled.div<ColorType>`
     width: 48%;
     height: 2px;
-    background-color: #68BB2B;
+    background-color: ${
+        ({ color }) => color
+    };
 `;
 
-export const ColorLeft = styled.div`
+export const ColorLeft = styled.div<ColorType>`
     width: 48%;
     height: 2px;
-    background-color: #EC5D35;
+    background-color: ${
+        ({ color }) => color
+    };
 `;
