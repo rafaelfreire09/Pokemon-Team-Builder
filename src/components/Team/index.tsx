@@ -2,9 +2,8 @@ import { ReactNode } from 'react';
 import * as S from './styles';
 
 import PokeSlot from './PokeSlot';
-import RemoveIcon from '../Icon/RemoveIcon';
-import ChooseIcon from '../Icon/ChoosenIcon';
 import PenIcon from '../Icon/PenIcon';
+import RemChoIcon from '../Icon/RemChoIcon';
 
 interface Props
 {
@@ -38,8 +37,8 @@ function Team({ children, pen, icons }: Props)
 
             {icons && 
                 <S.Icons>
-                    <RemoveIcon />
-                    <ChooseIcon />
+                    <RemChoIcon type={"remove"} />
+                    <RemChoIcon type={"choose"} />
                 </S.Icons>
             }
         </S.Container>
