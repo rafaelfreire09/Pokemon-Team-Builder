@@ -4,55 +4,27 @@ import axios from 'axios';
 import * as S from './styles';
 
 import Pokemon from '../Pokemon';
-
-interface Poke 
-{
-    name: string,
-    url: string
-}
-
-const urls = 
-{
-    url1: 'https://pokeapi.co/api/v2/pokemon/1/',
-    url2: 'https://pokeapi.co/api/v2/pokemon/2/',
-    url3: 'https://pokeapi.co/api/v2/pokemon/3/',
-    url4: 'https://pokeapi.co/api/v2/pokemon/4/',
-    url5: 'https://pokeapi.co/api/v2/pokemon/5/',
-    url6: 'https://pokeapi.co/api/v2/pokemon/6/',
-    url7: 'https://pokeapi.co/api/v2/pokemon/7/',
-    url8: 'https://pokeapi.co/api/v2/pokemon/8/',
-    url9: 'https://pokeapi.co/api/v2/pokemon/9/',
-}
+import { CallPokeAPI } from '../../services/api';
+import { IFinalData } from '../../services/types';
 
 function ChoosePokemon() 
 {
-    const [ pokemonList, setPokemonList ] = useState([]);
-    const [ iterator, setIterator ] = useState(1);
+    const [ pokemonList, setPokemonList ] = useState<IFinalData[]>([]);
 
     const getData = async () => 
     {
-        const U = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10"
-
-        const response = await axios.get(U);
-
-        setPokemonList(response.data.results);
-
-        //console.log(U)
+        CallPokeAPI()
+            .then(object => {
+                setPokemonList(object)
+            })
     }
 
     useEffect(() => 
     {
-        //getData();
+        getData();
     }, [])
 
-    useEffect(() => {}, [pokemonList]);
-
-    function calcIterator<Number>()
-    {
-        const listSize = pokemonList.length;
-
-        return listSize-(listSize-iterator);
-    }
+    useEffect(() => console.log(pokemonList), [pokemonList]);
 
     return (
         <S.Container>
@@ -72,7 +44,6 @@ function ChoosePokemon()
                     <Pokemon key={index} url={pokemon.url}/>
                 })} */}
                 {/* {<Pokemon url={pokemonList[0]}/>} */}
-                {<Pokemon url={urls.url1}/>}
             </S.PokeList>
         </S.Container>
     );
