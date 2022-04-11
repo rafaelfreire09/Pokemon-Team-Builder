@@ -1,20 +1,29 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
 import * as S from './styles';
 
-import PokemonImage from '../../assets/pokemon-image.png';
-import { colorTypes } from '../../utils';
+import { colorTypes, IColor } from '../../utils';
 import { Props } from './types';
-
 
 function Pokemon({ id, name, image, type1, type2}: Props) 
 {
     function getColor(type: string): string
     {
-        const colorCorrect = `colorTypes.${type}`
+        let color = '';
 
-        return colorCorrect;
+        for (let i = 1; i <= Object.keys(colorTypes).length; i++)
+        {
+            if (colorTypes[i].name == type)
+            {
+                color = colorTypes[i].color;
+            }
+        }
+
+        if (color)
+        {
+            return color;
+        } else 
+        {
+            return color = '#000000';
+        }        
     }
     
     return (
@@ -32,8 +41,8 @@ function Pokemon({ id, name, image, type1, type2}: Props)
             </S.Name>
 
             <S.Colors>
-                <S.ColorRight color={colorTypes.n1.dark}/>
-                <S.ColorLeft color={colorTypes.n1.dark}/>
+                <S.ColorRight color={getColor(type1)}/>
+                <S.ColorLeft color={getColor(type2)}/>
             </S.Colors>
         </S.Container>
     );

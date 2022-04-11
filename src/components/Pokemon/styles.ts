@@ -36,7 +36,10 @@ export const Image = styled.img`
     margin-left: auto;
     margin-right: auto;
 
-    padding-top: 10px;
+    width: 49px;
+    height: 49px;
+
+    padding-top: 0px;
 `;
 
 export const Name = styled.div`

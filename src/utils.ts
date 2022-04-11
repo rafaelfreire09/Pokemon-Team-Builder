@@ -1,28 +1,83 @@
-export const colorTypes = 
+export interface IColor
 {
-    n1: {
+    [id: number]: {
+        name: string,
+        color: string,
+    }
+}
+
+export const colorTypes: IColor = 
+{
+    1: {
         name: 'bug',
-        code: '#89960B',
-        dark: '#322C26',
-        dragon: '#6B57D2',
-        fairy: '#DA93DD',
-        fighting: '#80311D',
-        fire: '#EC5D35',
-        ghost: '#AD6EEC',
-        grass: '#68BB2B',
-        ground: '#D0B155',
-        normal: '#C3C0B8',
-        poison: '#924694',
-        psychic: '#DA3063',
-        steel: '#8F8E9E',
-        water: '#5CC1ED',
-        electic: '#F4CB38',
-        ice: '#9BDEFB',
-        flying: '#5D74D5',
-        rock: '#9D853C',
+        color: '#89960B',
     },
-    n2: {
+    2: {
         name: 'dark',
-        code: '#322C26',
+        color: '#322C26',
+    },
+    3: {
+        name: 'dragon',
+        color: '#6B57D2',
+    },
+    4: {
+        name: 'fairy',
+        color: '#DA93DD',
+    },
+    5: {
+        name: 'fighting',
+        color: '#80311D',
+    },
+    6: {
+        name: 'fire',
+        color: '#EC5D35',
+    },
+    7: {
+        name: 'ghost',
+        color: '#AD6EEC',
+    },
+    8: {
+        name: 'grass',
+        color: '#68BB2B',
+    },
+    9: {
+        name: 'ground',
+        color: '#D0B155',
+    },
+    10: {
+        name: 'normal',
+        color: '#C3C0B8',
+    },
+    11: {
+        name: 'poison',
+        color: '#924694',
+    },
+    12: {
+        name: 'psychic',
+        color: '#DA3063',
+    },
+    13: {
+        name: 'steel',
+        color: '#8F8E9E',
+    },
+    14: {
+        name: 'water',
+        color: '#5CC1ED',
+    },
+    15: {
+        name: 'electic',
+        color: '#F4CB38',
+    },
+    16: {
+        name: 'ice',
+        color: '#9BDEFB',
+    },
+    17: {
+        name: 'flying',
+        color: '#5D74D5',
+    },
+    18: {
+        name: 'rock',
+        color: '#9D853C',
     }
 };

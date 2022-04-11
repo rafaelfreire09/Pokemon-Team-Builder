@@ -21,7 +21,7 @@ function ChoosePokemon()
 
     useEffect(() => 
     {
-        getData();
+        //getData();
     }, [])
 
     useEffect(() => console.log(pokemonList), [pokemonList]);
