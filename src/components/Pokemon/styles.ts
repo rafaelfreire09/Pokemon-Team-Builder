@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
-interface ColorType
-{
-    color: string;
-}
+import { ColorType } from '../../types/color';
 
 export const Container = styled.div`
     width: 60px;
@@ -39,7 +36,11 @@ export const Image = styled.img`
     width: 49px;
     height: 49px;
 
-    padding-top: 0px;
+    cursor: pointer;
+
+    .dragging{
+        filter: opacity(50%);
+    }
 `;
 
 export const Name = styled.div`

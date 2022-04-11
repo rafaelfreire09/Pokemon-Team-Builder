@@ -4,9 +4,6 @@ export const Container = styled.div`
     width: 100%;
     height: 110px;
 
-    background-color: #90ADC6;
-    border-radius: 25px;
-
     display: flex;
     flex-direction: column;
     align-items: center;

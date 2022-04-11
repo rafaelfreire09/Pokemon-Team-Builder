@@ -7,6 +7,80 @@ import Pokemon from '../Pokemon';
 import { CallPokeAPI } from '../../services/api';
 import { IFinalData } from '../../services/types';
 
+const data = 
+[
+    {
+        id: 1,
+        name: "Bulbasar",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png",
+        type1: "grass",
+        type2: "poison",
+    },
+    {
+        id: 2,
+        name: "Ivysaur",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/2.png",
+        type1: "grass",
+        type2: "poison",
+    },
+    {
+        id: 3,
+        name: "Venusaur",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/3.png",
+        type1: "grass",
+        type2: "poison",
+    },
+    {
+        id: 4,
+        name: "Charmander",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/4.png",
+        type1: "grass",
+        type2: "poison",
+    },
+    {
+        id: 5,
+        name: "Charmeleon",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/5.png",
+        type1: "fire",
+        type2: "",
+    },
+    {
+        id: 6,
+        name: "Charizard",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/6.png",
+        type1: "fire",
+        type2: "flying",
+    },
+    {
+        id: 7,
+        name: "Squirtle",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/7.png",
+        type1: "water",
+        type2: "",
+    },
+    {
+        id: 8,
+        name: "wartortle",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/8.png",
+        type1: "water",
+        type2: "",
+    },
+    {
+        id: 4,
+        name: "Charmander",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/4.png",
+        type1: "grass",
+        type2: "poison",
+    },
+    {
+        id: 3,
+        name: "Venusaur",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/3.png",
+        type1: "grass",
+        type2: "poison",
+    },
+]
+
 function ChoosePokemon() 
 {
     const [ pokemonList, setPokemonList ] = useState<IFinalData[]>([]);
@@ -24,7 +98,7 @@ function ChoosePokemon()
         //getData();
     }, [])
 
-    useEffect(() => console.log(pokemonList), [pokemonList]);
+    useEffect(() => {}, [pokemonList]);
 
     return (
         <S.Container>
@@ -33,17 +107,11 @@ function ChoosePokemon()
             </S.Text>
 
             <S.PokeList>
-                {/* {pokemonList.map((pokemon: any) => {
-                    <Pokemon url={pokemon.url}/>
-                    //console.log(pokemon.url);
-                    //setIterator(iterator + 1);
-                })} */}
-                {/* {pokemonList.map((pokemon: Poke, index: number) => {
-                    console.log(pokemon.url);
-                    console.log(index);
-                    <Pokemon key={index} url={pokemon.url}/>
-                })} */}
-                {/* {<Pokemon url={pokemonList[0]}/>} */}
+                {/* {<Pokemon id={8} name={"wartortle"} image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/8.png"} type1={"water"} type2={""}/>}  */}
+
+                {data.map((element, index) => {
+                    return <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
+                })}
             </S.PokeList>
         </S.Container>
     );

@@ -30,7 +30,7 @@ export async function CallPokeAPI(): Promise<IFinalData[]>
 {  
     const mainEndpoint = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10";
 
-    const response1 = await axios.get(mainEndpoint);
+    const response1 = await axios.get('mainEndpoint');
 
     const pokemonList: Array<IObjectPokemon> = response1.data.results;
 

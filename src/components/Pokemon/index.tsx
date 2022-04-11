@@ -1,6 +1,7 @@
+import { createRef } from 'react';
 import * as S from './styles';
 
-import { colorTypes, IColor } from '../../utils';
+import { colorTypes } from '../../utils';
 import { Props } from './types';
 
 function Pokemon({ id, name, image, type1, type2}: Props) 
@@ -22,9 +23,23 @@ function Pokemon({ id, name, image, type1, type2}: Props)
             return color;
         } else 
         {
-            return color = '#000000';
+            return color = '#ffffff';
         }        
     }
+
+    function dragStart (e: any)
+    {
+        e.target.classList.add('dragging');
+    }
+
+    const handleClick = (item: any) =>
+    {
+        console.log('Clicou');
+        //console.log(e.target);
+        //item.addEventListener('dragstart', dragStart);
+    }
+
+    //document.querySelector(reff).addEventListener('click', (e) => { console.log("Clicou"); });
     
     return (
         <S.Container>
@@ -34,7 +49,7 @@ function Pokemon({ id, name, image, type1, type2}: Props)
                 </S.NumberId>
             </S.Id>
 
-            <S.Image src={image}/>
+            <S.Image src={image} onMouseDown={handleClick} draggable="true"/>
 
             <S.Name>
                 {name}

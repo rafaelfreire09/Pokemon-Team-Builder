@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ColorType } from '../../../types/color';
+
 export const Container = styled.div`
     margin: 10px 0px 10px 30px;
     display: flex;
@@ -7,47 +9,64 @@ export const Container = styled.div`
 
     justify-content: center;
     align-items: center;
+
+    position: relative;
 `;
 
 export const Division = styled.div`
     width: 68px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 `;
 
 export const DivisionLine = styled.div`
     background-color: #E5E5E5;
     width: 68px;
-    height: 10px;
+    height: 5px;
 
     position: absolute;
+
+    margin-top: 100%;
 `;
 
 export const DivisionCircle = styled.div`
     background-color: #E5E5E5;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
 
     position: absolute;
+    margin-top: 100%;
 `;
 
-export const BallTop = styled.div`
-    background-color: #ffffff;
+export const BallTop = styled.div<ColorType>`
+    background-color: ${
+        ({ color }) => color
+    };
     display: inline-block;
 
-    height: 31px;
+    height: 33px;
     width: 68px;
 
-    border-top-left-radius: 90px;
-    border-top-right-radius: 90px;
+    border-top-left-radius: 68px;
+    border-top-right-radius: 68px;
 `;
 
-export const BallBottom = styled.div`
-    background-color: #ffffff;
+export const BallBottom = styled.div<ColorType>`
+    background-color: ${
+        ({ color }) => color
+    };
     display: inline-block;
 
-    height: 31px;
+    height: 33px;
     width: 68px;
 
-    border-bottom-left-radius: 90px;
-    border-bottom-right-radius: 90px;
+    border-bottom-left-radius: 68px;
+    border-bottom-right-radius: 68px;
 `;

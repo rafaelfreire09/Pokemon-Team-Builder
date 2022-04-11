@@ -4,12 +4,12 @@ function PokeSlot()
 {
     return (
         <S.Container>
-            <S.BallTop />
             <S.Division>
                 <S.DivisionLine />
                 <S.DivisionCircle />
             </S.Division>
-            <S.BallBottom />
+            <S.BallTop color={"#ffffff"}/>
+            <S.BallBottom color={"#ffffff"}/>
         </S.Container>
     );
 }
