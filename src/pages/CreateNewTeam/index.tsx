@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Header from '../../components/Header';
-import Team from '../../components/MyTeam';
+import MyTeam from '../../components/MyTeam';
 import ChoosePokemon from '../../components/ChoosePokemon';
 
 function CreateNewTeam() 
@@ -15,9 +15,9 @@ function CreateNewTeam()
                 </Header>
             </Link>
 
-            <Team pen={true} icons={true}>
+            <MyTeam pen={true} icons={true}>
                 My Team
-            </Team>
+            </MyTeam>
 
             <ChoosePokemon />
         </S.Container>

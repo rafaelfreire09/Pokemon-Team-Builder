@@ -44,7 +44,7 @@ function PokeSlot()
                 <S.DivisionLine />
                 <S.DivisionCircle />
             </S.Division>
-            {image && <S.Image src={image}/>}
+            {image && <S.Image src={image} draggable="false"/>}
             <S.BallTop color={getWhatColor(type1)}/>
             <S.BallBottom color={getWhatColor(type2)}/>
         </S.Container>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Header from '../../components/Header';
-import Team from '../../components/MyTeam';
+import MyTeam from '../../components/MyTeam';
 import Line from '../../components/Line';
 
 function Teams() 
@@ -16,18 +16,18 @@ function Teams()
             </Link>
 
             <S.SingleTeam>
-                <Team>
+                <MyTeam>
                     Kaio's Team
-                </Team>
+                </MyTeam>
                 <S.LinePosition>
                     <Line color='#333652'/>
                 </S.LinePosition>
             </S.SingleTeam>
 
             <S.SingleTeam>
-                <Team>
+                <MyTeam>
                     Kaio's Team
-                </Team>
+                </MyTeam>
                 <S.LinePosition>
                     <Line color='#333652'/>
                 </S.LinePosition>
