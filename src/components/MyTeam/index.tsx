@@ -1,18 +1,12 @@
-import { ReactNode } from 'react';
 import * as S from './styles';
+
+import { Props } from './types';
 
 import PokeSlot from './PokeSlot';
 import PenIcon from '../Icon/PenIcon';
 import RemChoIcon from '../Icon/RemChoIcon';
 
-interface Props
-{
-    children: ReactNode;
-    pen?: boolean;
-    icons?: boolean;
-}
-
-function Team({ children, pen, icons }: Props) 
+function MyTeam({ children, pen, icons }: Props) 
 {
     return (
         <S.Container>
@@ -45,4 +39,4 @@ function Team({ children, pen, icons }: Props)
     );
 }
 
-export default Team;
+export default MyTeam;

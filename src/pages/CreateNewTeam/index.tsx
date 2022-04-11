@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Header from '../../components/Header';
-import Team from '../../components/Team';
+import Team from '../../components/MyTeam';
 import ChoosePokemon from '../../components/ChoosePokemon';
 
 function CreateNewTeam() 

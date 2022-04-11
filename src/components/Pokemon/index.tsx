@@ -1,55 +1,33 @@
 import { createRef } from 'react';
 import * as S from './styles';
 
-import { colorTypes } from '../../utils';
+import { getColor } from '../../utils';
 import { Props } from './types';
 
 function Pokemon({ id, name, image, type1, type2}: Props) 
 {
-    function getColor(type: string): string
-    {
-        let color = '';
-
-        for (let i = 1; i <= Object.keys(colorTypes).length; i++)
-        {
-            if (colorTypes[i].name == type)
-            {
-                color = colorTypes[i].color;
-            }
-        }
-
-        if (color)
-        {
-            return color;
-        } else 
-        {
-            return color = '#ffffff';
-        }        
+    const handleDragStart = (event: React.DragEvent<HTMLDivElement>, data: string) => {
+        event.dataTransfer.setData('text', data);
     }
 
-    function dragStart (e: any)
+    function convert(imageURL: string, type1: string, type2: string): string
     {
-        e.target.classList.add('dragging');
-    }
+        const URLFinal = imageURL + ` ${type1}` + ` ${type2}`;
 
-    const handleClick = (item: any) =>
-    {
-        console.log('Clicou');
-        //console.log(e.target);
-        //item.addEventListener('dragstart', dragStart);
+        return URLFinal;
     }
-
-    //document.querySelector(reff).addEventListener('click', (e) => { console.log("Clicou"); });
     
     return (
-        <S.Container>
+        <S.Container >
             <S.Id>
                 <S.NumberId>
                     #{id}
                 </S.NumberId>
             </S.Id>
 
-            <S.Image src={image} onMouseDown={handleClick} draggable="true"/>
+            {/* <S.Image src={image} onMouseDown={handleClick} draggable="true"/> */}
+
+            <S.Image src={image} onDragStart={(event) => handleDragStart(event, convert(image, type1, type2))} />
 
             <S.Name>
                 {name}

@@ -13,6 +13,14 @@ export const Container = styled.div`
     position: relative;
 `;
 
+export const Image = styled.img`
+    width: 77px;
+    height: 77px;
+
+    position: absolute;
+    margin-top: -20px;
+`;
+
 export const Division = styled.div`
     width: 68px;
 

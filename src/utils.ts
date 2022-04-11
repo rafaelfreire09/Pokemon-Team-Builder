@@ -1,3 +1,24 @@
+export function getColor(type: string): string
+{
+    let color = '';
+
+    for (let i = 1; i <= Object.keys(colorTypes).length; i++)
+    {
+        if (colorTypes[i].name == type)
+        {
+            color = colorTypes[i].color;
+        }
+    }
+
+    if (color)
+    {
+        return color;
+    } else 
+    {
+        return color = '#ffffff';
+    }        
+}
+
 export interface IColor
 {
     [id: number]: {
