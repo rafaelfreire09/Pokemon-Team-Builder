@@ -2,11 +2,26 @@ import styled from 'styled-components';
 
 import { ColorType } from '../../types/color';
 
+interface Display
+{
+    setDisplay: string
+}
+
 export const Container = styled.div`
     width: 60px;
     height: 75px;
 
     margin: 7px;
+`;
+
+export const Icon = styled.div<Display>`
+    display: ${
+        ({ setDisplay }) => setDisplay
+    };
+    position: absolute;
+
+    margin-top: 10px;
+    margin-left: -5px;
 `;
 
 export const Id = styled.div`

@@ -6,9 +6,10 @@ import Choosen from '../../../assets/choosen-icon.png';
 interface IIconType
 {
     type: string
+    opacity: string;
 }
 
-function RemChoIcon ({ type }: IIconType)
+function RemChoIcon ({ type, opacity }: IIconType)
 {
     function whatIcon (icon: string): any
     {
@@ -33,7 +34,7 @@ function RemChoIcon ({ type }: IIconType)
     }
 
     return (
-        <S.Container color={whatColor(type)}>
+        <S.Container color={whatColor(type)} opacityLevel={opacity}>
             <S.IconType src={whatIcon(type)} />
         </S.Container>
     );

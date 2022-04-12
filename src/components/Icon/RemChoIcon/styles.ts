@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-import { ColorType } from '../../../types/color';
+interface Opacity
+{
+    color: string
+    opacityLevel: string
+}
 
-export const Container = styled.div<ColorType>`
+export const Container = styled.div<Opacity>`
     margin-left: 15px;
 
     width: 40px;
@@ -16,7 +20,9 @@ export const Container = styled.div<ColorType>`
     align-items: center;
     justify-content: center;
 
-    filter: opacity(40%);
+    filter: ${
+        ({ opacityLevel }) => opacityLevel
+    };
 `;
 
 export const IconType = styled.img``;

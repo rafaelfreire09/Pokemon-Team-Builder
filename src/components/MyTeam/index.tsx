@@ -31,8 +31,8 @@ function MyTeam({ children, pen, icons }: Props)
 
             {icons && 
                 <S.Icons>
-                    <RemChoIcon type={"remove"} />
-                    <RemChoIcon type={"choose"} />
+                    <RemChoIcon type={"remove"} opacity={"opacity(40%)"}/>
+                    <RemChoIcon type={"choose"} opacity={"opacity(40%)"}/>
                 </S.Icons>
             }
         </S.Container>
