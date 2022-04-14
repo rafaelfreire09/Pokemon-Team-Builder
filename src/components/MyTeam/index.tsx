@@ -4,7 +4,7 @@ import { Props } from './types';
 
 import PokeSlot from './PokeSlot';
 import PenIcon from '../Icon/PenIcon';
-import RemChoIcon from '../Icon/RemChoIcon';
+import RemOrSubIcon from '../Icon/RemOrSubIcon';
 
 function MyTeam({ children, pen, icons }: Props) 
 {
@@ -18,21 +18,21 @@ function MyTeam({ children, pen, icons }: Props)
             </S.Title>
 
             <S.SlotTop>
-                <PokeSlot />
-                <PokeSlot />
-                <PokeSlot />
+                <PokeSlot idP={0}/>
+                <PokeSlot idP={1}/>
+                <PokeSlot idP={2}/>
             </S.SlotTop>
 
             <S.SlotBottom>
-                <PokeSlot />
-                <PokeSlot />
-                <PokeSlot />
+                <PokeSlot idP={3}/>
+                <PokeSlot idP={4}/>
+                <PokeSlot idP={5}/>
             </S.SlotBottom>
 
             {icons && 
                 <S.Icons>
-                    <RemChoIcon type={"remove"} opacity={"opacity(40%)"}/>
-                    <RemChoIcon type={"choose"} opacity={"opacity(40%)"}/>
+                    <RemOrSubIcon type={"remove"}/>
+                    <RemOrSubIcon type={"submit"}/>
                 </S.Icons>
             }
         </S.Container>

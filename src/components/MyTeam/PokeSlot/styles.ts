@@ -2,7 +2,12 @@ import styled from 'styled-components';
 
 import { ColorType } from '../../../types/color';
 
-export const Container = styled.div`
+interface IGrayScale
+{
+    grayScale: string
+}
+
+export const Container = styled.div<IGrayScale>`
     margin: 10px 0px 10px 30px;
     display: flex;
     flex-direction: column;
@@ -11,6 +16,10 @@ export const Container = styled.div`
     align-items: center;
 
     position: relative;
+
+    filter: ${
+        ({ grayScale }) => grayScale
+    };
 `;
 
 export const Image = styled.img`
@@ -19,6 +28,8 @@ export const Image = styled.img`
 
     position: absolute;
     margin-top: -20px;
+
+    cursor: pointer;
 `;
 
 export const Division = styled.div`

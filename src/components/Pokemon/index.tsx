@@ -1,13 +1,40 @@
-import { createRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppSelector } from '../../hooks/redux-hooks';
 import * as S from './styles';
+
+import ChooseIcon from '../Icon/ChoosenIcon';
 
 import { getColor } from '../../utils';
 import { Props } from './types';
-import RemChoIcon from '../Icon/RemChoIcon';
 
 function Pokemon({ id, name, image, type1, type2}: Props) 
 {
     const [ showIcon, setShowIcon ] = useState('none');
+
+    const allSlots = useAppSelector(state => state.myTeam.slot);
+
+    useEffect(() => {
+        getIdSlot();
+    }, [allSlots]);
+
+    function getIdSlot()
+    {
+        let found = 0;
+
+        for (let i = 0; i < Object.keys(allSlots).length; i++)
+        {
+            if (allSlots[i].image == image)
+            {
+                found++;
+                setShowIcon('flex');
+            }
+        }
+
+        if (found == 0)
+        {
+            setShowIcon('none');
+        }
+    } 
 
     function convert(imageURL: string, type1: string, type2: string): string
     {
@@ -23,7 +50,7 @@ function Pokemon({ id, name, image, type1, type2}: Props)
     return (
         <S.Container>
             <S.Icon setDisplay={showIcon}>
-                <RemChoIcon type={"choose"} opacity={"opacity(100%)"}/>
+                <ChooseIcon />
             </S.Icon>
 
             <S.Id>
@@ -32,11 +59,8 @@ function Pokemon({ id, name, image, type1, type2}: Props)
                 </S.NumberId>
             </S.Id>
 
-            {/* <S.Image src={image} onMouseDown={handleClick} draggable="true"/> */}
-
             <S.Image src={image} onDragStart={(event) => {
                 handleDragStart(event, convert(image, type1, type2));
-                //setShowIcon('flex');
             }}/>
 
             <S.Name>

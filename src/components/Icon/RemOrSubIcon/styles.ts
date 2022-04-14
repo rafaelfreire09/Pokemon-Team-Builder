@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-interface Opacity
+interface Props
 {
     color: string
     opacityLevel: string
+    cursor: string
 }
 
-export const Container = styled.div<Opacity>`
+export const Container = styled.div<Props>`
     margin-left: 15px;
 
     width: 40px;
@@ -22,6 +23,10 @@ export const Container = styled.div<Opacity>`
 
     filter: ${
         ({ opacityLevel }) => opacityLevel
+    };
+
+    cursor: ${
+        ({ cursor }) => cursor
     };
 `;
 

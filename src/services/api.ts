@@ -28,7 +28,7 @@ async function getPokeInfo(SinglePokeURL: string): Promise<IFinalData>
 
 export async function CallPokeAPI(): Promise<IFinalData[]>
 {  
-    const mainEndpoint = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10";
+    const mainEndpoint = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=16";
 
     const response1 = await axios.get('mainEndpoint');
 

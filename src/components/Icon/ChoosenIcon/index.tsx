@@ -5,7 +5,7 @@ import Choosen from '../../../assets/choosen-icon.png';
 function ChooseIcon() 
 {
     return (
-        <S.Container>
+        <S.Container color="#8FDA58">
             <S.IconType src={Choosen}/>
         </S.Container>
     );
