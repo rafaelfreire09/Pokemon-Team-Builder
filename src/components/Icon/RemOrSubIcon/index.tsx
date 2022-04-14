@@ -24,6 +24,7 @@ function RemOrSubIcon ({ type }: IIconType)
 
     useEffect(() => {
         checkIfSelected();
+        checkIfFull();
     }, [allSlots]);
 
     function checkIfSelected()
@@ -31,6 +32,7 @@ function RemOrSubIcon ({ type }: IIconType)
         let foundTrue = 0;
         let foundFalse = 0;
         let idFound = -1;
+        const action = "selected";
 
         for (let i = 0; i < Object.keys(allSlots).length; i++)
         {
@@ -49,14 +51,32 @@ function RemOrSubIcon ({ type }: IIconType)
 
         if (foundTrue == 1 && foundFalse == 5)
         {
-            setOpacityState("opacity(100%)");
-            setCursor("pointer");
-            setIdSlot(idFound);
+            whatType(action, type, true, idFound);
         } else 
         {
-            setOpacityState("opacity(40%)");
-            setCursor("default");
-            setIdSlot(-1);
+            whatType(action, type, false, idFound);
+        }
+    }
+
+    function checkIfFull ()
+    {
+        let found = 0;
+        const action = "send";
+
+        for (let i = 0; i < Object.keys(allSlots).length; i++)
+        {
+            if (allSlots[i].image)
+            {
+                found++;
+            }
+        }
+
+        if (found == 6)
+        {
+            whatType(action, type, true, -1);
+        } else 
+        {
+            whatType(action, type, false, -1);
         }
     }
 
@@ -102,6 +122,36 @@ function RemOrSubIcon ({ type }: IIconType)
         } else 
         {
             return "#8FDA58";
+        }
+    }
+
+    function whatType (action: string ,type: string, activate: boolean, id: number)
+    {
+        if (type == "remove" && action == "selected")
+        {
+            if (activate)
+            {
+                setOpacityState("opacity(100%)");
+                setCursor("pointer");
+                setIdSlot(id);
+            } else 
+            {
+                setOpacityState("opacity(40%)");
+                setCursor("default");
+                setIdSlot(-1);
+            }
+
+        } else if (type == "submit" && action == "send")
+        {
+            if (activate)
+            {
+                setOpacityState("opacity(100%)");
+                setCursor("pointer");
+            } else 
+            {
+                setOpacityState("opacity(40%)");
+                setCursor("default");
+            }
         }
     }
 

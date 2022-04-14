@@ -11,7 +11,34 @@ export const Title = styled.div`
     flex-direction: row;
     
     padding-top: 20px;
-    `;
+`;
+
+export const Focus = styled.input`
+    width: 100%;
+    height: 100%;
+
+    background-color: #E9EAEC;
+`;
+
+export const Input = styled.input`
+    color: #333652;
+
+    width: 90px;
+    
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+
+    //border-radius: 0;
+    background-color: #E9EAEC;
+    //border-bottom: 1px solid #E9EAEC;
+
+    //resize: horizontal;
+    border: none;
+    appearance: none;
+    //box-shadow: none;
+    //display: block;
+`;
 
 export const Text = styled.div`
     color: #333652;

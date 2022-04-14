@@ -1,4 +1,4 @@
-export function getColor(type: string): string
+export function getColor(type: string | undefined): string
 {
     let color = '';
 

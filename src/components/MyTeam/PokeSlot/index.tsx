@@ -4,13 +4,15 @@ import * as S from './styles';
 import { getColor } from '../../../utils';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addPokemon, selectPokemon } from '../../../redux/myTeamSlice';
+import { IPokemon } from '../types';
 
 interface Props
 {
     idP: number;
+    full?: IPokemon | null
 }
 
-function PokeSlot({ idP }: Props) 
+function PokeSlot({ idP, full }: Props) 
 {
     const [ imageURL, setImageURL ] = useState('');
     const [ type1, setType1 ] = useState('');
@@ -61,7 +63,7 @@ function PokeSlot({ idP }: Props)
         }
     }
     
-    function getWhatColor(colorType: string)
+    function getWhatColor(colorType: string | undefined)
     {
         return colorType ? colorType : '#ffffff';
     }
@@ -109,9 +111,19 @@ function PokeSlot({ idP }: Props)
                 <S.DivisionLine />
                 <S.DivisionCircle />
             </S.Division>
-            {imageURL && <S.Image src={imageURL} draggable="false" onClick={handleClick}/>}
-            <S.BallTop color={getWhatColor(type1)}/>
-            <S.BallBottom color={getWhatColor(type2)}/>
+
+            {full?.image && <S.Image src={full?.image} cursor={'default'} draggable="false" onClick={handleClick}/>}
+
+            {imageURL && <S.Image src={imageURL} cursor={'pointer'} draggable="false" onClick={handleClick}/>}
+
+            <S.BallTop color={getWhatColor(type1 || getColor(full?.type1))}/>
+
+            <S.BallBottom color={getWhatColor(type2 || getColor(full?.type2))}/>
+
+
+            {/* <S.BallTop color={full?.image ? (full?.type1 ? full?.type1 : '#ffffff') : getWhatColor(type1)}/>
+
+            <S.BallBottom color={full?.image ? (full?.type2 ? full?.type2 : '#ffffff') :getWhatColor(type2)}/> */}
         </S.Container>
     );
 }

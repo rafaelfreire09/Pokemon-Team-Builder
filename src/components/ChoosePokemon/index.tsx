@@ -120,6 +120,13 @@ const data =
         type1: "normal",
         type2: "flying",
     },
+    {
+        id: 17,
+        name: "pidgeotto",
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/17.png",
+        type1: "normal",
+        type2: "flying",
+    },
 ]
 
 function ChoosePokemon() 
@@ -147,7 +154,7 @@ function ChoosePokemon()
 
         //getData();
 
-        CallPokeAPI(3)
+        /* CallPokeAPI(3)
             .then((list) => 
             {
                 console.log(list)
@@ -156,7 +163,7 @@ function ChoosePokemon()
 
         
         console.log("chegou1")
-        console.log(pokemonList.length)
+        console.log(pokemonList.length) */
     }, [])
 
     /* useEffect(() => {
@@ -173,38 +180,20 @@ function ChoosePokemon()
 
             <S.PokeList>
                 {
-                    pokemonList.map((element, index) => 
-                    {
-                        return (
-                            <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
-                        )
-                    })
-                }
-                {/* {
                     data.map((element, index) => {
                         return (
                             <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
                         )
                     })
-                } */}
-                {/* {
-                    data.map((element, index, array) => {
-                        return (
-                            <Pokemon key={index} id={array[index].id} name={array[index].name} image={array[index].image} type1={array[index].type1} type2={array[index].type2}/>
-                        )
-                    })
-                } */}
-                {/* {
-                    pokemonList.map((pokemon, index, array) => 
+                }
+                {
+                    /* pokemonList.map((element, index) => 
                     {
                         return (
-                            <Pokemon key={array.length} id={array[index].id} name={array[index].name} image={array[index].image} type1={array[index].type1} type2={array[index].type2}/>
+                            <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
                         )
-                    })
-                } */}
-                {/* {
-                    loadead && <Pokemon key={pokemonList[0].id} id={pokemonList[0].id} name={pokemonList[0].name} image={pokemonList[0].image} type1={pokemonList[0].type1} type2={pokemonList[0].type2}/>
-                } */}
+                    }) */
+                }
             </S.PokeList>
         </S.Container>
     );

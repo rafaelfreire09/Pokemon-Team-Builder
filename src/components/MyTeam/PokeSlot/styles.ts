@@ -7,6 +7,11 @@ interface IGrayScale
     grayScale: string
 }
 
+interface ICursor
+{
+    cursor: string
+}
+
 export const Container = styled.div<IGrayScale>`
     margin: 10px 0px 10px 30px;
     display: flex;
@@ -22,14 +27,16 @@ export const Container = styled.div<IGrayScale>`
     };
 `;
 
-export const Image = styled.img`
+export const Image = styled.img<ICursor>`
     width: 77px;
     height: 77px;
 
     position: absolute;
     margin-top: -20px;
 
-    cursor: pointer;
+    cursor: ${
+        ({ cursor }) => cursor
+    };
 `;
 
 export const Division = styled.div`

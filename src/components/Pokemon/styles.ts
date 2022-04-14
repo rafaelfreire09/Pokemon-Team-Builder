@@ -8,8 +8,8 @@ interface Display
 }
 
 export const Container = styled.div`
-    width: 60px;
-    height: 75px;
+    width: 55px;
+    height: 72px;
 
     margin: 7px;
 `;
@@ -18,18 +18,24 @@ export const Icon = styled.div<Display>`
     display: ${
         ({ setDisplay }) => setDisplay
     };
-    position: absolute;
+    opacity: 80%;
 
-    margin-top: 10px;
+    position: relative;
+
+    margin-top: 15px;
     margin-left: -5px;
+
+    margin-bottom: -55px;
 `;
 
 export const Id = styled.div`
     background-color: #90ADC6;
     width: 18px;
     height: 18px;
-    position: absolute;
+    position: relative;
     border-radius: 50%;
+
+    margin-bottom: -15px;
 
     display: flex;
     align-items: center;

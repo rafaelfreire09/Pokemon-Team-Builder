@@ -4,7 +4,7 @@ import { IPokemonData, IURLList } from './types';
 
 const getPokeInfo = async (SinglePokeURL: string): Promise<IPokemonData> =>
 {
-    const response = await axios.get(SinglePokeURL);
+    const response = await axios.get('');
 
     const pokeID: number = response.data.id;
     const pokeName: string = response.data.name;

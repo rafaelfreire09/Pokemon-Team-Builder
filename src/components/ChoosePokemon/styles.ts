@@ -22,4 +22,9 @@ export const PokeList = styled.div`
 
     margin-left: 20px;
     margin-top: 20px;
+
+    max-height: 350px;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
 `;
