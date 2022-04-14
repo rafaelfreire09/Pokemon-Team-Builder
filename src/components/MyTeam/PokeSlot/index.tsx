@@ -23,7 +23,7 @@ function PokeSlot({ idP }: Props)
     const allSlots = useAppSelector(state => state.myTeam.slot);
 
     useEffect(() => {
-        console.log(imageURL);
+        //console.log(imageURL);
         dispatch(
             addPokemon(
                 {

@@ -1,63 +1,52 @@
 import axios from "axios";
 
-import { IObjectPokemon, IPokeTypes, IFinalData } from './types';
+import { IPokemonData, IURLList } from './types';
 
-async function getPokeInfo(SinglePokeURL: string): Promise<IFinalData>
+const getPokeInfo = async (SinglePokeURL: string): Promise<IPokemonData> =>
 {
-    const response2 = await axios.get(SinglePokeURL);
+    const response = await axios.get(SinglePokeURL);
 
-    const pokeID: number = response2.data.id;
-    const pokeName: string = response2.data.name;
-    const pokeImage: string = response2.data.sprites.other.home.front_default;
-    const pokeTypes: IPokeTypes = response2.data.types;
+    const pokeID: number = response.data.id;
+    const pokeName: string = response.data.name;
+    const pokeImage: string = response.data.sprites.other.home.front_default;
+    const pokeType1: string = response.data.types[0].type.name;
+    const pokeType2: string = response.data.types[1].type.name;
 
-    const object: IFinalData = 
+    const object: IPokemonData = 
     {
         id: pokeID,
         name: pokeName,
         image: pokeImage,
-        type1: pokeTypes[0].type.name,
-        type2: pokeTypes[1].type.name,
+        type1: pokeType1,
+        type2: pokeType2,
     }
-
-    console.log('3-')
-    console.log(object)
 
     return object;
 }
 
-export async function CallPokeAPI(): Promise<IFinalData[]>
+export const CallPokeAPI = async (size: number): Promise<IPokemonData[]> =>
 {  
-    const mainEndpoint = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=16";
+    let URLList: IURLList[] = [];
 
-    const response1 = await axios.get('mainEndpoint');
-
-    const pokemonList: Array<IObjectPokemon> = response1.data.results;
-
-    console.log('1-')
-    console.log(pokemonList)
-
-    const pokeURL: IFinalData[] = pokemonList.map( (element: IObjectPokemon) => 
+    for (let i = 1; i <= size; i++)
     {
-        const SinglePokeURL = `${element.url}`;
+        const URL = {
+            url: `https://pokeapi.co/api/v2/pokemon/${i}/`
+        };
 
-        console.log('2-')
-        console.log(SinglePokeURL)
+        URLList.push(URL);
+    }
 
-        let pokeInfo: IFinalData = {};
+    let pokemonList: IPokemonData[] = [];
 
-        getPokeInfo(SinglePokeURL)
-            .then(info => {
-                pokeInfo = Object.assign({}, info);
-                console.log('4-')
-                console.log(pokeInfo)
-            });
+    Promise.all(
+        URLList.map(async (element) => 
+        {
+            const pokemon = await getPokeInfo(element.url);
 
-        return pokeInfo;
-    });
+            pokemonList.push(pokemon);
+        })
+    )
 
-    console.log('5-')
-    console.log(pokeURL)
-
-    return pokeURL;
+    return pokemonList;
 }

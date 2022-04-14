@@ -4,7 +4,7 @@ import * as S from './styles';
 
 import Pokemon from '../Pokemon';
 import { CallPokeAPI } from '../../services/api';
-import { IFinalData } from '../../services/types';
+import { IPokemonData } from '../../services/types';
 
 const data = 
 [
@@ -124,22 +124,46 @@ const data =
 
 function ChoosePokemon() 
 {
-    const [ pokemonList, setPokemonList ] = useState<IFinalData[]>([]);
-
-    const getData = async () => 
-    {
-        CallPokeAPI()
-            .then(object => {
-                setPokemonList(object)
-            })
-    }
+    const [ pokemonList, setPokemonList ] = useState<IPokemonData[]>([]);
+    const [ loaded, setLoaded] = useState(false);
 
     useEffect(() => 
     {
+        const getData = async () => 
+        {
+            /* const list = await CallPokeAPI(3);
+    
+            setPokemonList(list);
+            console.log(list)
+            console.log(pokemonList.length)
+            await CallPokeAPI(3)
+                .then((list) => 
+                {
+                    console.log(list)
+                    setPokemonList(list);
+                })
+            */
+        }
+
         //getData();
+
+        CallPokeAPI(3)
+            .then((list) => 
+            {
+                console.log(list)
+                setPokemonList(list);
+            })
+
+        
+        console.log("chegou1")
+        console.log(pokemonList.length)
     }, [])
 
-    useEffect(() => {}, [pokemonList]);
+    /* useEffect(() => {
+        setLoaded(true);
+        console.log(pokemonList.length)
+        console.log("chegou2")
+    }, [pokemonList]); */
 
     return (
         <S.Container>
@@ -148,9 +172,39 @@ function ChoosePokemon()
             </S.Text>
 
             <S.PokeList>
-                {data.map((element, index) => {
-                    return <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
-                })}
+                {
+                    pokemonList.map((element, index) => 
+                    {
+                        return (
+                            <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
+                        )
+                    })
+                }
+                {/* {
+                    data.map((element, index) => {
+                        return (
+                            <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
+                        )
+                    })
+                } */}
+                {/* {
+                    data.map((element, index, array) => {
+                        return (
+                            <Pokemon key={index} id={array[index].id} name={array[index].name} image={array[index].image} type1={array[index].type1} type2={array[index].type2}/>
+                        )
+                    })
+                } */}
+                {/* {
+                    pokemonList.map((pokemon, index, array) => 
+                    {
+                        return (
+                            <Pokemon key={array.length} id={array[index].id} name={array[index].name} image={array[index].image} type1={array[index].type1} type2={array[index].type2}/>
+                        )
+                    })
+                } */}
+                {/* {
+                    loadead && <Pokemon key={pokemonList[0].id} id={pokemonList[0].id} name={pokemonList[0].name} image={pokemonList[0].image} type1={pokemonList[0].type1} type2={pokemonList[0].type2}/>
+                } */}
             </S.PokeList>
         </S.Container>
     );
