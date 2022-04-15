@@ -1,13 +1,7 @@
 import styled from 'styled-components';
+import { IProps } from './types';
 
-interface Props
-{
-    color: string
-    opacityLevel: string
-    cursor: string
-}
-
-export const Container = styled.div<Props>`
+export const Container = styled.div<IProps>`
     margin-left: 15px;
 
     width: 40px;

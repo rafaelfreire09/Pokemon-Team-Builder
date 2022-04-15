@@ -1,4 +1,4 @@
-export interface Props
+export interface IProps
 {
     id: number,
     name: string,
@@ -7,9 +7,7 @@ export interface Props
     type2: string
 }
 
-export interface DataTransfer
+export interface IDisplay
 {
-    image: string,
-    type1: string,
-    type2: string
+    setDisplay: string
 }

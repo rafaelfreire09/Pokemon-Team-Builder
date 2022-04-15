@@ -5,7 +5,6 @@ export const Container = styled.div`
     height: 46px;
 
     background-color: #90ADC6;
-    //border-radius: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 

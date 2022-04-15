@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import * as S from './styles';
-
-import { removePokemon } from '../../../redux/myTeamSlice';
+import { IIconType } from './types';
 
 import Remove from '../../../assets/remove-icon.png';
 import Choosen from '../../../assets/choosen-icon.png';
 import Submit from '../../../assets/choosen-icon.png';
 
-interface IIconType
-{
-    type: string
-}
+import { removePokemon } from '../../../redux/myTeamSlice';
 
 function RemOrSubIcon ({ type }: IIconType)
 {
@@ -22,11 +18,66 @@ function RemOrSubIcon ({ type }: IIconType)
     const allSlots = useAppSelector(state => state.myTeam.slot);
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        checkIfSelected();
-        checkIfFull();
-    }, [allSlots]);
+    function whatIcon (icon: string): any
+    {
+        if(icon == 'remove')
+        {
+            return Remove;
+        } else if (icon == 'submit')
+        {
+            return Submit;
+        } else
+        {
+            return Choosen;
+        }
+    }
 
+    function whatColor (color: string): string
+    {
+        if(color == 'remove')
+        {
+            return "#F8635A";
+        } else if (color == 'submit')
+        {
+            return "#6068e2";
+        } else 
+        {
+            return "#8FDA58";
+        }
+    }
+
+    // Received the params to change the visibility of icon
+    function whatType (action: string, type: string, activate: boolean, id: number)
+    {
+        if (type == "remove" && action == "selected")
+        {
+            if (activate)
+            {
+                setOpacityState("opacity(100%)");
+                setCursor("pointer");
+                setIdSlot(id);
+            } else 
+            {
+                setOpacityState("opacity(40%)");
+                setCursor("default");
+                setIdSlot(-1);
+            }
+
+        } else if (type == "submit" && action == "send")
+        {
+            if (activate)
+            {
+                setOpacityState("opacity(100%)");
+                setCursor("pointer");
+            } else 
+            {
+                setOpacityState("opacity(40%)");
+                setCursor("default");
+            }
+        }
+    }
+
+    // Check if there slot selected
     function checkIfSelected()
     {
         let foundTrue = 0;
@@ -58,6 +109,7 @@ function RemOrSubIcon ({ type }: IIconType)
         }
     }
 
+    // Check if all slots are fulfilled
     function checkIfFull ()
     {
         let found = 0;
@@ -93,67 +145,14 @@ function RemOrSubIcon ({ type }: IIconType)
             );
         } else if ((type == "submit") && (idSlot != -1))
         {
-            
+            // Dispatch or POST Method must be implement
         }
     }
 
-    function whatIcon (icon: string): any
-    {
-        if(icon == 'remove')
-        {
-            return Remove;
-        } else if (icon == 'submit')
-        {
-            return Submit;
-        } else
-        {
-            return Choosen;
-        }
-    }
-
-    function whatColor (color: string): string
-    {
-        if(color == 'remove')
-        {
-            return "#F8635A";
-        } else if (color == 'submit')
-        {
-            return "#6068e2";
-        } else 
-        {
-            return "#8FDA58";
-        }
-    }
-
-    function whatType (action: string ,type: string, activate: boolean, id: number)
-    {
-        if (type == "remove" && action == "selected")
-        {
-            if (activate)
-            {
-                setOpacityState("opacity(100%)");
-                setCursor("pointer");
-                setIdSlot(id);
-            } else 
-            {
-                setOpacityState("opacity(40%)");
-                setCursor("default");
-                setIdSlot(-1);
-            }
-
-        } else if (type == "submit" && action == "send")
-        {
-            if (activate)
-            {
-                setOpacityState("opacity(100%)");
-                setCursor("pointer");
-            } else 
-            {
-                setOpacityState("opacity(40%)");
-                setCursor("default");
-            }
-        }
-    }
+    useEffect(() => {
+        checkIfSelected();
+        checkIfFull();
+    }, [allSlots]);
 
     return (
         <S.Container color={whatColor(type)} opacityLevel={opacityState} cursor={cursor} onClick={handleClick}>

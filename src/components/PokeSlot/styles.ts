@@ -1,16 +1,7 @@
 import styled from 'styled-components';
 
-import { ColorType } from '../../../types/color';
-
-interface IGrayScale
-{
-    grayScale: string
-}
-
-interface ICursor
-{
-    cursor: string
-}
+import { ICursor, IGrayScale } from './types';
+import { IColorType } from '../../types/color';
 
 export const Container = styled.div<IGrayScale>`
     margin: 10px 0px 10px 30px;
@@ -71,7 +62,7 @@ export const DivisionCircle = styled.div`
     margin-top: 100%;
 `;
 
-export const BallTop = styled.div<ColorType>`
+export const BallTop = styled.div<IColorType>`
     background-color: ${
         ({ color }) => color
     };
@@ -84,7 +75,7 @@ export const BallTop = styled.div<ColorType>`
     border-top-right-radius: 68px;
 `;
 
-export const BallBottom = styled.div<ColorType>`
+export const BallBottom = styled.div<IColorType>`
     background-color: ${
         ({ color }) => color
     };

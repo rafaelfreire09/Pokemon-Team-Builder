@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react';
 import * as S from './styles';
+import { IProps } from './types';
 
-import { getColor } from '../../../utils';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
-import { addPokemon, selectPokemon } from '../../../redux/myTeamSlice';
-import { IPokemon } from '../types';
+import { getColor } from '../../utils';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
+import { addPokemon, selectPokemon } from '../../redux/myTeamSlice';
 
-interface Props
-{
-    idP: number;
-    full?: IPokemon | null
-}
-
-function PokeSlot({ idP, full }: Props) 
+function PokeSlot({ idP, full }: IProps) 
 {
     const [ imageURL, setImageURL ] = useState('');
     const [ type1, setType1 ] = useState('');
@@ -23,24 +17,6 @@ function PokeSlot({ idP, full }: Props)
     const dispatch = useAppDispatch();
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
-
-    useEffect(() => {
-        //console.log(imageURL);
-        dispatch(
-            addPokemon(
-                {
-                    id: idP,
-                    image: imageURL,
-                    selected: true
-                }
-            )
-        );
-    }, [ imageURL ])
-
-    useEffect(() => {
-        checkIfSelected();
-        checkIfRemoved();
-    }, [allSlots]);
 
     function checkIfSelected()
     {
@@ -68,6 +44,8 @@ function PokeSlot({ idP, full }: Props)
         return colorType ? colorType : '#ffffff';
     }
 
+    // Split the string into 3
+    // Ex: "https:.../1.png grass poison" to "https.../1.png", "grass" and "poison".
     function splitData(data: string)
     {
         const dataArray = data.split(" ");
@@ -81,15 +59,15 @@ function PokeSlot({ idP, full }: Props)
         setType2(getColor(type2));
     }
     
-    const enableDropping = (event: React.DragEvent<HTMLDivElement>) => { 
-        event.preventDefault();
-    }
-        
     const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         const data = event.dataTransfer.getData("text");
-
+        
         splitData(data);
+    }
+
+    const enableDropping = (event: React.DragEvent<HTMLDivElement>) => { 
+        event.preventDefault();
     }
 
     const handleClick = () => 
@@ -104,6 +82,23 @@ function PokeSlot({ idP, full }: Props)
             )
         );
     }
+
+    useEffect(() => {
+        dispatch(
+            addPokemon(
+                {
+                    id: idP,
+                    image: imageURL,
+                    selected: true
+                }
+            )
+        );
+    }, [ imageURL ])
+
+    useEffect(() => {
+        checkIfSelected();
+        checkIfRemoved();
+    }, [allSlots]);
     
     return (
         <S.Container grayScale={grayScaleState} onDragOver={enableDropping} onDrop={handleDrop}>
@@ -119,11 +114,6 @@ function PokeSlot({ idP, full }: Props)
             <S.BallTop color={getWhatColor(type1 || getColor(full?.type1))}/>
 
             <S.BallBottom color={getWhatColor(type2 || getColor(full?.type2))}/>
-
-
-            {/* <S.BallTop color={full?.image ? (full?.type1 ? full?.type1 : '#ffffff') : getWhatColor(type1)}/>
-
-            <S.BallBottom color={full?.image ? (full?.type2 ? full?.type2 : '#ffffff') :getWhatColor(type2)}/> */}
         </S.Container>
     );
 }

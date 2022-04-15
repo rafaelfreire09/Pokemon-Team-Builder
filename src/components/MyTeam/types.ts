@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface IPokemon
 {
     image: string,
@@ -7,13 +5,13 @@ export interface IPokemon
     type2: string,
 }
 
-interface ITeam
+export interface ITeam
 {
     name: string
     pokemons: IPokemon[]
 }
 
-export interface Props
+export interface IProps
 {
     teamName?: string | null;
     text?: string | null;

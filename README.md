@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# 👾 Pokemon Team Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Test it yourself: https://pokemon-team-builder-five.vercel.app/
 
-## Available Scripts
+<img src="./github/screen1.png" alt="drawing" style="width:200px; height: 430px;"/>
+<img src="./github/screen2.png" alt="drawing" style="width:200px; height: 430px;"/>
 
-In the project directory, you can run:
+## Tecnologies
 
-### `npm start`
+- Typescript
+- React
+- Styled Components
+- Redux
+- Axios
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. First, if you dont have Git installed, download the zip file and extract him. If you have, clone the repository:
 
-### `npm test`
+	```sh
+	git clone https://github.com/rafaelfreire09/Pokemon-Team-Builder.git
+	```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Inside the project, install the necessary dependencies to run.
 
-### `npm run build`
+	```sh
+	npm install
+	```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	or
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+	```sh
+	yarn install
+	```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. To run:
 
-### `npm run eject`
+	```sh
+	npm start
+	```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	or
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	```sh
+	yarn start
+	```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Open http://localhost:3000 to view it in the browser.

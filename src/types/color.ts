@@ -1,4 +1,4 @@
-export interface ColorType
+export interface IColorType
 {
     color: string;
 }

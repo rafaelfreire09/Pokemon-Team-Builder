@@ -1,15 +1,10 @@
 import * as S from './styles';
+import { IProps } from './types';
 
-interface Props
-{
-    color: string;
-}
-
-function Line({ color }: Props) 
+function Line({ color }: IProps) 
 {
     return (
-        <S.Container colorType={color}>
-        </S.Container>
+        <S.Container colorType={color} />
     );
 }
 

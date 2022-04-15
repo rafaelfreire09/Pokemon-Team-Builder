@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-
-`;
+export const Container = styled.div``;
 
 export const IconType = styled.img`
     margin-left: 5px;

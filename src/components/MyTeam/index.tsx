@@ -1,12 +1,12 @@
 import * as S from './styles';
 
-import { Props } from './types';
+import { IProps } from './types';
 
-import PokeSlot from './PokeSlot';
-import PenIcon from '../Icon/PenIcon';
-import RemOrSubIcon from '../Icon/RemOrSubIcon';
+import PokeSlot from '../PokeSlot';
+import PenIcon from '../Icons/PenIcon';
+import RemOrSubIcon from '../Icons/RemOrSubIcon';
 
-function MyTeam({ teamName, text, pen, icons, team }: Props) 
+function MyTeam({ teamName, text, pen, icons, team }: IProps) 
 {
     return (
         <S.Container>

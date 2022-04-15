@@ -1,14 +1,9 @@
-import { ReactNode } from 'react';
 import * as S from './styles';
+import { IProps } from './types';
 
 import Line from '../Line';
 
-interface Props
-{
-    children: ReactNode;
-}
-
-function Header({ children }: Props) 
+function Header({ children }: IProps) 
 {
     return (
         <S.Container>

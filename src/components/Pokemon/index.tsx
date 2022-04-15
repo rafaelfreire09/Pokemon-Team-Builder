@@ -2,21 +2,18 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../hooks/redux-hooks';
 import * as S from './styles';
 
-import ChooseIcon from '../Icon/ChoosenIcon';
+import ChooseIcon from '../Icons/ChoosenIcon';
 
 import { getColor } from '../../utils';
-import { Props } from './types';
+import { IProps } from './types';
 
-function Pokemon({ id, name, image, type1, type2}: Props) 
+function Pokemon({ id, name, image, type1, type2}: IProps) 
 {
     const [ showIcon, setShowIcon ] = useState('none');
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
 
-    useEffect(() => {
-        getIdSlot();
-    }, [allSlots]);
-
+    // If the pokemon is there in some slot, show icon 
     function getIdSlot()
     {
         let found = 0;
@@ -34,8 +31,9 @@ function Pokemon({ id, name, image, type1, type2}: Props)
         {
             setShowIcon('none');
         }
-    } 
+    }
 
+    // Received the URL, Type 1 and Type 2 and concatenate all in one single string
     function convert(imageURL: string, type1: string, type2: string): string
     {
         const URLFinal = imageURL + ` ${type1}` + ` ${type2}`;
@@ -46,6 +44,10 @@ function Pokemon({ id, name, image, type1, type2}: Props)
     const handleDragStart = (event: React.DragEvent<HTMLDivElement>, data: string) => {
         event.dataTransfer.setData('text', data);
     }
+
+    useEffect(() => {
+        getIdSlot();
+    }, [allSlots]);
     
     return (
         <S.Container>
