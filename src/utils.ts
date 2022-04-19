@@ -5,7 +5,7 @@ export function getColor(type: string | undefined): string
 
     for (let i = 1; i <= Object.keys(colorTypes).length; i++)
     {
-        if (colorTypes[i].name == type)
+        if (colorTypes[i].name === type)
         {
             color = colorTypes[i].color;
         }
@@ -17,6 +17,28 @@ export function getColor(type: string | undefined): string
     } else 
     {
         return color = '#ffffff';
+    }        
+}
+
+// Receives a hexadecimal code  and returns the name
+export function getName(color: string | undefined): string
+{
+    let name = '';
+
+    for (let i = 1; i <= Object.keys(colorTypes).length; i++)
+    {
+        if (colorTypes[i].color === color)
+        {
+            name = colorTypes[i].name;
+        }
+    }
+
+    if (name)
+    {
+        return name;
+    } else 
+    {
+        return name = '#ffffff';
     }        
 }
 

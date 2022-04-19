@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import * as S from './styles';
 import { IProps } from './types';
 
-import { getColor } from '../../utils';
+import { getColor, getName } from '../../utils';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { addPokemon, selectPokemon } from '../../redux/myTeamSlice';
 
@@ -77,6 +77,8 @@ function PokeSlot({ idP, full }: IProps)
                 {
                     id: idP,
                     image: imageURL,
+                    type1: type1,
+                    type2: type2,
                     selected: true
                 }
             )
@@ -89,6 +91,8 @@ function PokeSlot({ idP, full }: IProps)
                 {
                     id: idP,
                     image: imageURL,
+                    type1: getName(type1),
+                    type2: getName(type2),
                     selected: true
                 }
             )

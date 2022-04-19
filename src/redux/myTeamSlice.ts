@@ -2,32 +2,43 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IRemove, ISlot } from './types';
 
 const initialState = {
-    teamsList: [],
     name: 'My team',
     allTrue: true,
     slot: [
         {
             image: '',
+            type1: '',
+            type2: '',
             selected: true,
         },
         {
             image: '',
+            type1: '',
+            type2: '',
             selected: true,
         },
         {
             image: '',
+            type1: '',
+            type2: '',
             selected: true,
         },
         {
             image: '',
+            type1: '',
+            type2: '',
             selected: true,
         },
         {
             image: '',
+            type1: '',
+            type2: '',
             selected: true,
         },
         {
             image: '',
+            type1: '',
+            type2: '',
             selected: true,
         }
     ]
@@ -42,6 +53,8 @@ export const myTeamSlice = createSlice({
             const id = action.payload.id;
 
             state.slot[id].image = action.payload.image;
+            state.slot[id].type1 = action.payload.type1;
+            state.slot[id].type2 = action.payload.type2;
 
             // Set all atribute Selected as True
             for (let i = 0; i < Object.keys(state.slot).length; i++)
@@ -54,6 +67,8 @@ export const myTeamSlice = createSlice({
             const id = action.payload.id;
 
             state.slot[id].image = '';
+            state.slot[id].type1 = '';
+            state.slot[id].type2 = '';
             state.allTrue = true;
 
             // Set all atribute Selected as True

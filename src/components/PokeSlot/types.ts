@@ -1,9 +1,4 @@
-export interface IPokemon
-{
-    image: string,
-    type1: string,
-    type2: string,
-}
+import { IPokemon } from "../../types/pokemon";
 
 export interface IProps
 {

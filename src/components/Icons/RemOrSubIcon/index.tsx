@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import * as S from './styles';
 import { IIconType } from './types';
@@ -8,22 +9,27 @@ import Choosen from '../../../assets/choosen-icon.png';
 import Submit from '../../../assets/choosen-icon.png';
 
 import { removePokemon } from '../../../redux/myTeamSlice';
+import { createNewTeam } from '../../../redux/teamsSlice';
+import { IPokemon, ITeam } from '../../../types/pokemon';
 
 function RemOrSubIcon ({ type }: IIconType)
 {
+    let navigate = useNavigate();
+
     const [ cursor, setCursor ] = useState('default');
     const [ opacityState, setOpacityState ] = useState("opacity(40%)");
     const [ idSlot, setIdSlot ] = useState(-1);
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
+    const teamName = useAppSelector(state => state.myTeam.name);
     const dispatch = useAppDispatch();
 
     function whatIcon (icon: string): any
     {
-        if(icon == 'remove')
+        if(icon === 'remove')
         {
             return Remove;
-        } else if (icon == 'submit')
+        } else if (icon === 'submit')
         {
             return Submit;
         } else
@@ -34,10 +40,10 @@ function RemOrSubIcon ({ type }: IIconType)
 
     function whatColor (color: string): string
     {
-        if(color == 'remove')
+        if(color === 'remove')
         {
             return "#F8635A";
-        } else if (color == 'submit')
+        } else if (color === 'submit')
         {
             return "#6068e2";
         } else 
@@ -49,7 +55,7 @@ function RemOrSubIcon ({ type }: IIconType)
     // Received the params to change the visibility of icon
     function whatType (action: string, type: string, activate: boolean, id: number)
     {
-        if (type == "remove" && action == "selected")
+        if (type === "remove" && action === "selected")
         {
             if (activate)
             {
@@ -63,7 +69,7 @@ function RemOrSubIcon ({ type }: IIconType)
                 setIdSlot(-1);
             }
 
-        } else if (type == "submit" && action == "send")
+        } else if (type === "submit" && action === "send")
         {
             if (activate)
             {
@@ -100,7 +106,7 @@ function RemOrSubIcon ({ type }: IIconType)
             }
         }
 
-        if (foundTrue == 1 && foundFalse == 5)
+        if (foundTrue === 1 && foundFalse === 5)
         {
             whatType(action, type, true, idFound);
         } else 
@@ -123,7 +129,7 @@ function RemOrSubIcon ({ type }: IIconType)
             }
         }
 
-        if (found == 6)
+        if (found === 6)
         {
             whatType(action, type, true, -1);
         } else 
@@ -134,7 +140,7 @@ function RemOrSubIcon ({ type }: IIconType)
 
     const handleClick = () => 
     {
-        if ((type == "remove") && (idSlot != -1))
+        if ((type === "remove") && (idSlot !== -1))
         {
             dispatch(
                 removePokemon(
@@ -143,9 +149,43 @@ function RemOrSubIcon ({ type }: IIconType)
                     }
                 )
             );
-        } else if ((type == "submit") && (idSlot != -1))
+        } 
+        
+        if (type == "submit")
         {
-            // Dispatch or POST Method must be implement
+            //console.log('Chegou1')
+
+            let team: ITeam = 
+            {
+                name: teamName,
+                pokemons: []
+            };
+
+            for (let i = 0; i < Object.keys(allSlots).length; i++)
+            {
+                //console.log(allSlots[i]);
+
+                const pokemon: IPokemon = 
+                {
+                    image: allSlots[i].image,
+                    type1: allSlots[i].type1,
+                    type2: allSlots[i].type2
+                }
+
+                //console.log(pokemon)
+
+                team.pokemons.push(pokemon);
+            }
+
+            //console.log(team.pokemons)
+
+            dispatch(
+                createNewTeam(
+                    team
+                )
+            );
+
+            navigate('/');
         }
     }
 
