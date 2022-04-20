@@ -15,7 +15,7 @@ function CreateNewTeam()
                 </Header>
             </Link>
 
-            <MyTeam teamName="My team" pen={true} icons={true} />
+            <MyTeam text="My team" pen={true} icons={true} />
 
             <ChoosePokemon />
         </S.Container>

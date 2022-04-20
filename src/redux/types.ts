@@ -11,3 +11,8 @@ export interface IRemove
 {
     id: number;
 }
+
+export interface ITeamName
+{
+    name: string;
+}

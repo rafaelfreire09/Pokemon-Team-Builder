@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IRemove, ISlot } from './types';
+import { IRemove, ISlot, ITeamName } from './types';
 
 const initialState = {
     name: 'My team',
@@ -48,6 +48,10 @@ export const myTeamSlice = createSlice({
     name: 'myteam',
     initialState: initialState,
     reducers: {
+        changeTeamName (state, action:PayloadAction<ITeamName>)
+        {
+            state.name = action.payload.name;
+        },
         addPokemon (state, action:PayloadAction<ISlot>)
         {
             const id = action.payload.id;
@@ -123,6 +127,6 @@ export const myTeamSlice = createSlice({
     }
 })
 
-export const { addPokemon, removePokemon, selectPokemon } = myTeamSlice.actions
+export const { changeTeamName, addPokemon, removePokemon, selectPokemon } = myTeamSlice.actions
 
 export default myTeamSlice;

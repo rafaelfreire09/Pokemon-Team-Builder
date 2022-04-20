@@ -5,20 +5,49 @@ import { IProps } from './types';
 import PokeSlot from '../PokeSlot';
 import PenIcon from '../Icons/PenIcon';
 import RemOrSubIcon from '../Icons/RemOrSubIcon';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAppDispatch } from '../../hooks/redux-hooks';
+import { changeTeamName } from '../../redux/myTeamSlice';
 
-function MyTeam({ teamName, text, pen, icons, team }: IProps) 
+function MyTeam({ text, pen, icons, team }: IProps) 
 {
+    const [ teamName, setTeamName ] = useState('');
+    
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(
+            changeTeamName(
+                {
+                    name: teamName
+                }
+            )
+        )
+    }, [teamName])
+
+    const handleTeamNameInput = (event: ChangeEvent<HTMLInputElement>) => {
+        setTeamName(event.target.value)
+        console.log(event.target.value);
+    }
+
     return (
         <S.Container>
             <S.Title>
                 {text && 
-                    <S.Input type="text" placeholder={text}/>
+                    <S.Input
+                        placeholder={text}
+                        type="text"  
+                        onChange={handleTeamNameInput}
+                        value={teamName}
+                        //type="search" 
+                        //onsearch={handleTeamNameInput}  
+                    />
                 }
-                {teamName && 
+                {/* {teamName && 
                     <S.Text>
                         {teamName}
                     </S.Text>
-                }
+                } */}
                 {team?.name && 
                     <S.Text>
                         {team?.name}

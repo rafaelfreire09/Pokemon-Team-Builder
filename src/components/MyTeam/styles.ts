@@ -23,7 +23,7 @@ export const Focus = styled.input`
 export const Input = styled.input`
     color: #333652;
 
-    width: 90px;
+    width: 140px;
     
     font-style: normal;
     font-weight: 800;
