@@ -7,28 +7,34 @@ import Header from '../../components/Header';
 import MyTeam from '../../components/MyTeam';
 import Line from '../../components/Line';
 
-import { teamsData } from '../../utils';
+//import { teamsData } from '../../utils';
 import { ITeam } from '../../types/pokemon';
 
 function Teams() 
 {
     const teamsStore = useAppSelector(state => state.teams);
 
-    /* const [ teams, setTeams ] = useState<ITeam[]>([]);
+    const [ teams, setTeams ] = useState<ITeam[]>([]);
     const [ showMessage, setShowMessage ] = useState(true);
 
     useEffect(() => {
         setTeams(teamsStore);
-        if (teams !== [])
+    }, []);
+
+    useEffect(() => {
+        checkMessage();
+    }, [teams])
+
+    function checkMessage ()
+    {
+        if (teams.length !== 0)
         {
-            console.log('Chegou1');
             setShowMessage(false);
         } else
         {
-            console.log('Chegou2');
             setShowMessage(true);
         }
-    }, [teamsStore]) */
+    }
 
     return (
         <S.Container>
@@ -39,9 +45,11 @@ function Teams()
             </Link>
 
             <S.TeamsSection>
-                {/* {showMessage && 
-                    <p>You don't have teams created</p>
-                } */}
+                {showMessage && 
+                    <S.Message>
+                        You don't have teams created.
+                    </S.Message>
+                }
                 {
                     teamsStore.map((element, index) => {
                         return (

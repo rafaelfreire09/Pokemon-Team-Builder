@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
+export const Message = styled.div`
+    margin-top: 15px;
+    font-weight: 700;
+    color: #333652;
+    text-align: center;
+`;
+
 export const TeamsSection = styled.div`
     width: 345px;
     height: 700px;
