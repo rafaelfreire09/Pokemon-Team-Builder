@@ -3,6 +3,11 @@ export interface IURLList
     url: string
 }
 
+export interface IGetList
+{
+    list: IPokemonData[]
+}
+
 export interface IPokemonData
 {
     id: number,

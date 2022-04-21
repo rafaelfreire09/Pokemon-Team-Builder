@@ -1,16 +1,22 @@
 import axios from "axios";
 
-import { IPokemonData, IURLList } from './types';
+import { IGetList, IPokemonData, IURLList } from './types';
 
 const getPokeInfo = async (SinglePokeURL: string): Promise<IPokemonData> =>
 {
-    const response = await axios.get('');
+    const response = await axios.get(SinglePokeURL);
 
     const pokeID: number = response.data.id;
     const pokeName: string = response.data.name;
     const pokeImage: string = response.data.sprites.other.home.front_default;
     const pokeType1: string = response.data.types[0].type.name;
-    const pokeType2: string = response.data.types[1].type.name;
+
+    let pokeType2: string = '';
+    try {
+        pokeType2 = response.data.types[1].type.name;
+    } catch (error) {
+        pokeType2 = '';
+    }
 
     const object: IPokemonData = 
     {
@@ -24,7 +30,7 @@ const getPokeInfo = async (SinglePokeURL: string): Promise<IPokemonData> =>
     return object;
 }
 
-export const CallPokeAPI = async (size: number): Promise<IPokemonData[]> =>
+export const CallPokeAPI = async (size: number): Promise<IGetList> =>
 {  
     let URLList: IURLList[] = [];
 
@@ -37,14 +43,14 @@ export const CallPokeAPI = async (size: number): Promise<IPokemonData[]> =>
         URLList.push(URL);
     }
 
-    let pokemonList: IPokemonData[] = [];
+    let pokemonList: IGetList = { list: [] };
 
     Promise.all(
         URLList.map(async (element) => 
         {
             const pokemon = await getPokeInfo(element.url);
 
-            pokemonList.push(pokemon);
+            pokemonList.list.push(pokemon);
         })
     )
 
