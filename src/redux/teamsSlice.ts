@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { ITeam } from '../types/pokemon';
+import { IRemoveTeam } from './types';
 
 const initialState: ITeam[] = [];
 
@@ -12,12 +14,11 @@ export const teamsSlice = createSlice({
         {
             state.push(action.payload);
         },
-        deleteTeam: (state, action: PayloadAction<ITeam>) =>
+        deleteTeam: (state, action: PayloadAction<IRemoveTeam>) =>
         {
             function checkIfNotEqual (team: ITeam): boolean
             {
-                console.log(team.name !== action.payload.name);
-                return team.name !== action.payload.name
+                return team.id !== action.payload.id
             }
 
             const newList = state.filter(team => checkIfNotEqual(team))

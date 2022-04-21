@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IRemove, ISlot, ITeamName } from './types';
+import { IRemovePokemon, ISlot, ITeamName } from './types';
 
 const initialState = {
     name: 'My team',
@@ -66,7 +66,7 @@ export const myTeamSlice = createSlice({
                 state.slot[i].selected = true;
             }
         },
-        removePokemon (state, action:PayloadAction<IRemove>)
+        removePokemon (state, action:PayloadAction<IRemovePokemon>)
         {
             const id = action.payload.id;
 

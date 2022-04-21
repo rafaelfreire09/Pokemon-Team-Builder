@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
+import {v4 as uuidv4} from 'uuid';
 import * as S from './styles';
 import { IProps } from './types';
 
@@ -153,17 +154,17 @@ function RemOrSubIcon ({ type }: IProps)
         
         if (type === "submit")
         {
-            //console.log('Chegou1')
+            const id = uuidv4();
 
             let team: ITeam = 
             {
+                id: id,
                 name: teamName,
                 pokemons: []
             };
 
             for (let i = 0; i < Object.keys(allSlots).length; i++)
             {
-                //console.log(allSlots[i]);
 
                 const pokemon: IPokemon = 
                 {
@@ -172,12 +173,8 @@ function RemOrSubIcon ({ type }: IProps)
                     type2: allSlots[i].type2
                 }
 
-                //console.log(pokemon)
-
                 team.pokemons.push(pokemon);
             }
-
-            //console.log(team.pokemons)
 
             dispatch(
                 createNewTeam(

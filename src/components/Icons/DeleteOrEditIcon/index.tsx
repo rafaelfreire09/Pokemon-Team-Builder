@@ -42,7 +42,9 @@ function DeleteOrEditIcon ({ type, team }: IProps)
         {
             dispatch(
                 deleteTeam(
-                    team
+                    {
+                        id: team.id
+                    }
                 )
             );
         } 
