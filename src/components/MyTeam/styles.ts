@@ -23,21 +23,19 @@ export const Focus = styled.input`
 export const Input = styled.input`
     color: #333652;
 
-    width: 140px;
+    width: 320px;
     
     font-style: normal;
     font-weight: 800;
     font-size: 13px;
 
-    //border-radius: 0;
-    background-color: #E9EAEC;
-    //border-bottom: 1px solid #E9EAEC;
-
-    //resize: horizontal;
+    outline: 0;
+    
     border: none;
-    appearance: none;
-    //box-shadow: none;
-    //display: block;
+    display: block;
+
+    //border-bottom: 2px solid #adadad;
+    background-color: transparent;
 `;
 
 export const Text = styled.div`

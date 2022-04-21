@@ -16,10 +16,17 @@ function MyTeam({ text, pen, icons, team }: IProps)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        let nameSend = teamName;
+
+        if (teamName === '')
+        {
+            nameSend = 'My team';
+        }
+
         dispatch(
             changeTeamName(
                 {
-                    name: teamName
+                    name: nameSend
                 }
             )
         )
@@ -43,17 +50,12 @@ function MyTeam({ text, pen, icons, team }: IProps)
                         //onsearch={handleTeamNameInput}  
                     />
                 }
-                {/* {teamName && 
-                    <S.Text>
-                        {teamName}
-                    </S.Text>
-                } */}
                 {team?.name && 
                     <S.Text>
                         {team?.name}
                     </S.Text>
                 }
-                {pen && <PenIcon />}
+                {/* pen && <PenIcon /> */}
             </S.Title>
 
             <S.SlotTop>
