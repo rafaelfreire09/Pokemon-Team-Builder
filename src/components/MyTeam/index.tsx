@@ -8,6 +8,7 @@ import RemOrSubIcon from '../Icons/RemOrSubIcon';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { changeTeamName } from '../../redux/myTeamSlice';
+import DeleteOrEditIcon from '../Icons/DeleteOrEditIcon';
 
 function MyTeam({ text, pen, icons, team }: IProps) 
 {
@@ -74,6 +75,12 @@ function MyTeam({ text, pen, icons, team }: IProps)
                 <S.Icons>
                     <RemOrSubIcon type={"remove"}/>
                     <RemOrSubIcon type={"submit"}/>
+                </S.Icons>
+            }
+
+            {team?.name && 
+                <S.Icons>
+                    <DeleteOrEditIcon type="delete" team={team}/>
                 </S.Icons>
             }
         </S.Container>

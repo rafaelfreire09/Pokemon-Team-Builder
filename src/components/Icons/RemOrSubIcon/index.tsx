@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import * as S from './styles';
-import { IIconType } from './types';
+import { IProps } from './types';
 
 import Remove from '../../../assets/remove-icon.png';
 import Choosen from '../../../assets/choosen-icon.png';
@@ -12,7 +12,7 @@ import { removePokemon } from '../../../redux/myTeamSlice';
 import { createNewTeam } from '../../../redux/teamsSlice';
 import { IPokemon, ITeam } from '../../../types/pokemon';
 
-function RemOrSubIcon ({ type }: IIconType)
+function RemOrSubIcon ({ type }: IProps)
 {
     let navigate = useNavigate();
 
@@ -151,7 +151,7 @@ function RemOrSubIcon ({ type }: IIconType)
             );
         } 
         
-        if (type == "submit")
+        if (type === "submit")
         {
             //console.log('Chegou1')
 

@@ -22,6 +22,10 @@ function Teams()
     }, []);
 
     useEffect(() => {
+        setTeams(teamsStore);
+    }, [teamsStore]);
+
+    useEffect(() => {
         checkMessage();
     }, [teams])
 
