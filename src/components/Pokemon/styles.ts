@@ -53,7 +53,7 @@ export const Image = styled.img`
     width: 49px;
     height: 49px;
 
-    cursor: grab;
+    cursor: pointer;
 
     .dragging{
         filter: opacity(50%);
