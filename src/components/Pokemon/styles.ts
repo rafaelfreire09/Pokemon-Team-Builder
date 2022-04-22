@@ -7,7 +7,7 @@ export const Container = styled.div`
     width: 55px;
     height: 72px;
 
-    margin: 7px;
+    margin: 7px 7px 10px 7px;
 `;
 
 export const Icon = styled.div<IStyledProps>`
@@ -51,23 +51,21 @@ export const Image = styled.img`
     margin-left: auto;
     margin-right: auto;
 
-    width: 49px;
-    height: 49px;
+    margin-top: 10px;
+
+    width: 45px;
+    height: 45px;
 
     cursor: pointer;
-
-    .dragging{
-        filter: opacity(50%);
-    }
 `;
 
 export const Name = styled.div`
-
-
     font-style: normal;
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 600;
+
     text-align: center;
+    text-transform: capitalize;
 `;
 
 export const Colors = styled.div`

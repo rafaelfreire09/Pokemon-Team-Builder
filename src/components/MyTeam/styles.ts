@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 319px;
+    width: 320px;
 
-    margin: 5px 36px 5px 20px;
     margin-top: 20px;
 `;
 
@@ -40,7 +39,7 @@ export const Input = styled.input`
 `;
 
 export const Text = styled.div`
-    margin-left: 10px;
+    //margin-left: 10px;
 
     color: #333652;
     

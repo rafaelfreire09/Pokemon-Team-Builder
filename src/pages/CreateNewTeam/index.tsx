@@ -15,9 +15,11 @@ function CreateNewTeam()
                 </Header>
             </Link>
 
-            <MyTeam />
+            <S.Content>
+                <MyTeam />
 
-            <ChoosePokemon />
+                <ChoosePokemon />
+            </S.Content>
         </S.Container>
     );
 }

@@ -1,3 +1,20 @@
+export interface IImageGet
+{
+    dream_world: [
+        front_default: string,
+        front_female: null
+    ],
+    home: [
+        front_default: string,
+        front_female: null,
+        front_shiny_default: string,
+        front_shiny_female: null,
+    ],
+    "official-artwork": { 
+        front_default: string,
+    }
+}
+
 export interface IURLList
 {
     url: string

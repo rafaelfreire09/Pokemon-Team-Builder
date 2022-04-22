@@ -4,12 +4,10 @@ export const Container = styled.div`
     width: 320px;
     height: 395px;
 
-    margin: 35px 13px 13px 15px;
+    margin-top: 40px;
 `;
 
 export const Text = styled.div`
-    //margin-left: 10px;
-
     color: #333652;
     
     font-style: normal;
@@ -24,9 +22,8 @@ export const PokeList = styled.div`
 
     margin: 10px;
 
-    max-height: 350px;
+    max-height: 360px;
 
-    //overflow-x: hidden;
     overflow-y: scroll;
 
     scrollbar-width: thin;

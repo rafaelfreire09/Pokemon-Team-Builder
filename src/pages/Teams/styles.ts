@@ -21,7 +21,6 @@ export const TeamsSection = styled.div`
 
     max-height: 680px;
 
-    //overflow-x: hidden;
     overflow-y: scroll;
 
     scrollbar-width: thin;

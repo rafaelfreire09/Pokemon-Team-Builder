@@ -9,19 +9,6 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const Line = styled.div`
-    width: 297px;
-    height: 1px;
-    margin-top: 64px;
-
-    background-color: #ffffff;
-`;
-
-export const Text = styled.div`
-    color: #ffffff;
-
-    font-weight: 800;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 30px;
+export const Content = styled.div`
+    margin: 0px 0px 0px 0px;
 `;

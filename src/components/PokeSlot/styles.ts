@@ -19,11 +19,11 @@ export const Container = styled.div<IStyledProps>`
 `;
 
 export const Image = styled.img<IStyledProps>`
-    width: 77px;
-    height: 77px;
+    width: 85px;
+    height: 85px;
 
     position: absolute;
-    margin-top: -20px;
+    margin-top: -6px;
 
     cursor: ${
         ({ cursor }) => cursor
