@@ -4,13 +4,13 @@ export const Container = styled.div`
     width: 319px;
 
     margin: 5px 36px 5px 20px;
+    margin-top: 20px;
 `;
 
 export const Title = styled.div`
     display: flex;
     flex-direction: row;
-    
-    padding-top: 20px;
+
 `;
 
 export const Focus = styled.input`
