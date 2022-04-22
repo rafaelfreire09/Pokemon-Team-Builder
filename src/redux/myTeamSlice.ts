@@ -140,8 +140,6 @@ export const myTeamSlice = createSlice({
             state.id = action.payload.id;
             state.name = action.payload.name;
             state.editing = true;
-
-            console.log(state.slot);
         },
         clearData (state, action:PayloadAction)
         {

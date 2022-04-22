@@ -273,121 +273,142 @@ export const pokemonData =
 [
     {
         id: 1,
-        name: "Bulbasar",
         image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png",
+        name: "bulbasaur",
         type1: "grass",
-        type2: "poison",
-    },
-    {
-        id: 2,
-        name: "Ivysaur",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/2.png",
-        type1: "grass",
-        type2: "poison",
-    },
-    {
-        id: 3,
-        name: "Venusaur",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/3.png",
-        type1: "grass",
-        type2: "poison",
+        type2: "poison"
     },
     {
         id: 4,
-        name: "Charmander",
         image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/4.png",
-        type1: "grass",
-        type2: "poison",
-    },
-    {
-        id: 5,
-        name: "Charmeleon",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/5.png",
+        name: "charmander",
         type1: "fire",
-        type2: "",
-    },
-    {
-        id: 6,
-        name: "Charizard",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/6.png",
-        type1: "fire",
-        type2: "flying",
+        type2: ""
     },
     {
         id: 7,
-        name: "Squirtle",
         image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/7.png",
+        name: "squirtle",
         type1: "water",
-        type2: "",
-    },
-    {
-        id: 8,
-        name: "wartortle",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/8.png",
-        type1: "water",
-        type2: "",
-    },
-    {
-        id: 9,
-        name: "blastoise",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/9.png",
-        type1: "water",
-        type2: "",
+        type2: ""
     },
     {
         id: 10,
-        name: "caterpie",
         image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/10.png",
+        name: "caterpie",
         type1: "bug",
-        type2: "",
-    },
-    {
-        id: 11,
-        name: "metapod",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/11.png",
-        type1: "bug",
-        type2: "",
-    },
-    {
-        id: 12,
-        name: "butterfree",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/12.png",
-        type1: "bug",
-        type2: "flying",
+        type2: ""
     },
     {
         id: 13,
-        name: "weedle",
         image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/13.png",
+        name: "weedle",
         type1: "bug",
-        type2: "poison",
-    },
-    {
-        id: 14,
-        name: "kakuna",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/14.png",
-        type1: "bug",
-        type2: "poison",
-    },
-    {
-        id: 15,
-        name: "beedrill",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/15.png",
-        type1: "bug",
-        type2: "poison",
+        type2: "poison"
     },
     {
         id: 16,
-        name: "pidgey",
         image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/16.png",
+        name: "pidgey",
         type1: "normal",
-        type2: "flying",
+        type2: "flying"
     },
     {
-        id: 17,
-        name: "pidgeotto",
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/17.png",
+        id: 19,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/19.png",
+        name: "rattata",
         type1: "normal",
-        type2: "flying",
+        type2: ""
+    },
+    {
+        id: 22,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/22.png",
+        name: "fearow",
+        type1: "normal",
+        type2: "flying"
+    },
+    {
+        id: 25,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png",
+        name: "pikachu",
+        type1: "electric",
+        type2: ""
+    },
+    {
+        id: 28,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/28.png",
+        name: "sandslash",
+        type1: "ground",
+        type2: ""
+    },
+    {
+        id: 31,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/31.png",
+        name: "nidoqueen",
+        type1: "poison",
+        type2: "ground",
+    },
+    {
+        id: 34,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/34.png",
+        name: "nidoking",
+        type1: "poison",
+        type2: "ground",
+    },
+    {
+        id: 37,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/37.png",
+        name: "vulpix",
+        type1: "fire",
+        type2: ""
+    },
+    {
+        id: 40,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/40.png",
+        name: "wigglytuff",
+        type1: "normal",
+        type2: "fairy"
+    },
+    {
+        id: 43,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/43.png",
+        name: "oddish",
+        type1: "grass",
+        type2: "poison"
+    },
+    {
+        id: 46,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/46.png",
+        name: "paras",
+        type1: "bug",
+        type2: "grass"
+    },
+    {
+        id: 49,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/49.png",
+        name: "venomoth",
+        type1: "bug",
+        type2: "poison"
+    },
+    {
+        id: 52,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/52.png",
+        name: "meowth",
+        type1: "normal",
+        type2: ""
+    },
+    {
+        id: 55,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/55.png",
+        name: "golduck",
+        type1: "water",
+        type2: ""
+    },
+    {
+        id: 58,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/58.png",
+        name: "growlithe",
+        type1: "fire",
+        type2: ""
     },
 ]

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as S from './styles';
 
-import { IPokemonData } from '../../services/types';
+import { IGetList, IPokemonData } from '../../services/types';
 import { pokemonData } from '../../utils';
 
 import { CallPokeAPI } from '../../services/api';
@@ -9,49 +9,22 @@ import Pokemon from '../Pokemon';
 
 function ChoosePokemon() 
 {
-    const [ pokemonList, setPokemonList ] = useState<IPokemonData[]>([]);
-    const [ loaded, setLoaded] = useState(false);
-
-    /* useEffect(() => 
-    {
-        const getData = async () => 
-        {
-            const list = await CallPokeAPI(3);
-    
-            setPokemonList(list);
-            console.log(list)
-            console.log(pokemonList.length)
-            await CallPokeAPI(3)
-                .then((list) => 
-                {
-                    console.log(list)
-                    setPokemonList(list);
-                })
-            
-        }
-
-        //getData();
-
-            CallPokeAPI(3)
-            .then((list) => 
-            {
-                console.log(list)
-                setPokemonList(list);
-            })
-
-        
-        console.log("chegou1")
-        console.log(pokemonList.length)
-    }, []) 
-    
-    */
+    //const [ pokemonList, setPokemonList ] = useState<any>({ list: [] });
+    //const [ loaded, setLoaded] = useState(false);
 
     /* useEffect(() => {
-        setLoaded(true);
-        console.log(pokemonList.length)
-        console.log("chegou2")
-    }, [pokemonList]); */
+        const getData = async () => 
+        {
+            const list = await CallPokeAPI(20);
+            
+            console.log(list)
+    
+            setPokemonList(list);
+        }
 
+        getData();
+    }, [])  */
+   
     return (
         <S.Container>
             <S.Text>
@@ -67,11 +40,11 @@ function ChoosePokemon()
                     })
                 }
                 {
-                    /* pokemonList.map((element, index) => 
+                    /* pokemonList.list.map((element: any, index: number) => 
                     {
-                        return (
+                        
                             <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
-                        )
+                        
                     }) */
                 }
             </S.PokeList>

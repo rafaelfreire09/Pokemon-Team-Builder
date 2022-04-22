@@ -57,7 +57,6 @@ function MyTeam({ team }: IProps)
 
     const handleTeamNameInput = (event: ChangeEvent<HTMLInputElement>) => {
         setTeamName(event.target.value)
-        console.log(event.target.value);
     }
 
     return (

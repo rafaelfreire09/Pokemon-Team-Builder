@@ -23,8 +23,6 @@ export const teamsSlice = createSlice({
 
             const newList = state.filter(team => checkIfNotEqual(team))
 
-            console.log(newList);
-
             return newList;
         },
         editTeam: (state, action: PayloadAction<ITeam>) =>

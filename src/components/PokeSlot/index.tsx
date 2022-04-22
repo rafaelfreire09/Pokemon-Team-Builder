@@ -58,9 +58,6 @@ function PokeSlot({ idP, full }: IProps)
                 setImageURL(allSlots[idP].image);
                 setType1(getColor(allSlots[idP].type1));
                 setType2(getColor(allSlots[idP].type2));
-            } else 
-            {
-                console.log('chegou1');
             }
         }
     }
