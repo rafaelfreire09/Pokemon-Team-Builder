@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 import { IColorType } from '../../types/color';
-import { IDisplay } from './types';
+import { IStyledProps } from './types';
 
 export const Container = styled.div`
     width: 55px;
     height: 72px;
 
-    margin: 7px;
+    margin: 7px 7px 10px 7px;
 `;
 
-export const Icon = styled.div<IDisplay>`
+export const Icon = styled.div<IStyledProps>`
     display: ${
         ({ setDisplay }) => setDisplay
     };
@@ -40,6 +40,7 @@ export const Id = styled.div`
 export const NumberId = styled.div`
     color: #ffffff;
 
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 9px;
@@ -50,20 +51,21 @@ export const Image = styled.img`
     margin-left: auto;
     margin-right: auto;
 
-    width: 49px;
-    height: 49px;
+    margin-top: 10px;
 
-    cursor: grab;
+    width: 45px;
+    height: 45px;
 
-    .dragging{
-        filter: opacity(50%);
-    }
+    cursor: pointer;
 `;
 
 export const Name = styled.div`
+    font-style: normal;
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 600;
+
     text-align: center;
+    text-transform: capitalize;
 `;
 
 export const Colors = styled.div`

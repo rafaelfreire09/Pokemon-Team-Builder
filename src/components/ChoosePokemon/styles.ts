@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 320px;
     height: 395px;
 
-    margin: 21px 40px 13px 15px;
+    margin-top: 40px;
 `;
 
 export const Text = styled.div`
@@ -18,13 +18,27 @@ export const Text = styled.div`
 export const PokeList = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
 
-    margin-left: 20px;
-    margin-top: 20px;
+    margin: 10px;
 
-    max-height: 350px;
+    max-height: 360px;
 
-    overflow-x: hidden;
     overflow-y: scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color: #C4C4C4 transparent;
+
+    &::-webkit-scrollbar{
+        width: 5px; 
+    }
+
+    &::-webkit-scrollbar-track{
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        background-color: #C4C4C4;
+        border-radius: 25px;
+    }
 `;

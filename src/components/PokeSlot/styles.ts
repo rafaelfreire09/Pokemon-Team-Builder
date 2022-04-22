@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { ICursor, IGrayScale } from './types';
+import { IStyledProps } from './types';
 import { IColorType } from '../../types/color';
 
-export const Container = styled.div<IGrayScale>`
+export const Container = styled.div<IStyledProps>`
     margin: 10px 0px 10px 30px;
     display: flex;
     flex-direction: column;
@@ -18,12 +18,12 @@ export const Container = styled.div<IGrayScale>`
     };
 `;
 
-export const Image = styled.img<ICursor>`
-    width: 77px;
-    height: 77px;
+export const Image = styled.img<IStyledProps>`
+    width: 85px;
+    height: 85px;
 
     position: absolute;
-    margin-top: -20px;
+    margin-top: -6px;
 
     cursor: ${
         ({ cursor }) => cursor

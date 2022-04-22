@@ -9,13 +9,13 @@ import Pokemon from '../Pokemon';
 
 function ChoosePokemon() 
 {
-    const [ pokemonList, setPokemonList ] = useState<any>({ list: [] });
-    //const [ loaded, setLoaded] = useState(false);
+    /* const [ pokemonList, setPokemonList ] = useState<any>({ list: [] });
+    const [ loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const getData = async () => 
         {
-            const list = await CallPokeAPI(20);
+            const list = await CallPokeAPI(1);
             
             console.log(list)
     
@@ -23,7 +23,7 @@ function ChoosePokemon()
         }
 
         getData();
-    }, []) 
+    }, [])  */
    
     return (
         <S.Container>

@@ -57,7 +57,17 @@ export const myTeamSlice = createSlice({
         },
         addPokemon (state, action:PayloadAction<ISlot>)
         {
-            const id = action.payload.id;
+            //const id = action.payload.id;
+            let id = -1;
+
+            for (let i = 0; i < Object.keys(state.slot).length; i++)
+            {
+                if (!state.slot[i].image)
+                {
+                    id = i;
+                    break;
+                }
+            }
 
             state.slot[id].image = action.payload.image;
             state.slot[id].type1 = action.payload.type1;
@@ -140,8 +150,6 @@ export const myTeamSlice = createSlice({
             state.id = action.payload.id;
             state.name = action.payload.name;
             state.editing = true;
-
-            console.log(state.slot);
         },
         clearData (state, action:PayloadAction)
         {

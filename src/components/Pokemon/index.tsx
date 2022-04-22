@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../hooks/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import * as S from './styles';
 
 import ChooseIcon from '../Icons/ChoosenIcon';
 
 import { getColor } from '../../utils';
 import { IProps } from './types';
+import { addPokemon } from '../../redux/myTeamSlice';
 
-function Pokemon({ id, name, image, type1, type2}: IProps) 
+function Pokemon({ id, name, image, type1, type2 }: IProps) 
 {
     const [ showIcon, setShowIcon ] = useState('none');
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
+
+    const dispatch = useAppDispatch();
 
     // If the pokemon is there in some slot, show icon 
     function getIdSlot()
@@ -20,29 +23,57 @@ function Pokemon({ id, name, image, type1, type2}: IProps)
 
         for (let i = 0; i < Object.keys(allSlots).length; i++)
         {
-            if (allSlots[i].image == image)
+            if (allSlots[i].image === image)
             {
                 found++;
                 setShowIcon('flex');
             }
         }
 
-        if (found == 0)
+        if (found === 0)
         {
             setShowIcon('none');
         }
     }
 
-    // Received the URL, Type 1 and Type 2 and concatenate all in one single string
-    function convert(imageURL: string, type1: string, type2: string): string
+    // Check if all slots are fulfilled
+    function checkIfFull (): boolean
     {
-        const URLFinal = imageURL + ` ${type1}` + ` ${type2}`;
+        let found = 0;
 
-        return URLFinal;
+        for (let i = 0; i < Object.keys(allSlots).length; i++)
+        {
+            if (allSlots[i].image)
+            {
+                found++;
+            }
+        }
+
+        if (found === 6)
+        {
+            return true
+        } else 
+        {
+            return false
+        }
     }
 
-    const handleDragStart = (event: React.DragEvent<HTMLDivElement>, data: string) => {
-        event.dataTransfer.setData('text', data);
+    const handleClick = () => 
+    {
+        if (!checkIfFull())
+        {
+            dispatch(
+                addPokemon(
+                    {
+                        id: id,
+                        image: image,
+                        type1: type1,
+                        type2: type2,
+                        selected: true
+                    }
+                )
+            );
+        }
     }
 
     useEffect(() => {
@@ -61,9 +92,11 @@ function Pokemon({ id, name, image, type1, type2}: IProps)
                 </S.NumberId>
             </S.Id>
 
-            <S.Image src={image} onDragStart={(event) => {
-                handleDragStart(event, convert(image, type1, type2));
-            }}/>
+            <S.Image 
+                src={image} 
+                onClick={handleClick}
+                draggable="false"
+            />
 
             <S.Name>
                 {name}

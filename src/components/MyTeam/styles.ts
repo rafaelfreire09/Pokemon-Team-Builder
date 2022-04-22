@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 319px;
+    width: 320px;
 
-    margin: 5px 36px 5px 20px;
+    margin-top: 20px;
 `;
 
 export const Title = styled.div`
     display: flex;
     flex-direction: row;
-    
-    padding-top: 20px;
+
 `;
 
 export const Focus = styled.input`
@@ -25,6 +24,7 @@ export const Input = styled.input`
 
     width: 320px;
     
+    font-family: 'Spartan';
     font-style: normal;
     font-weight: 800;
     font-size: 13px;
@@ -39,6 +39,8 @@ export const Input = styled.input`
 `;
 
 export const Text = styled.div`
+    //margin-left: 10px;
+
     color: #333652;
     
     font-style: normal;
@@ -59,7 +61,7 @@ export const SlotBottom = styled.div`
 `;
 
 export const Icons = styled.div`
-    margin-top: 20px;
+    margin-top: 10px;
 
     display: flex;
     flex-direction: row;
