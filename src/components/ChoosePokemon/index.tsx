@@ -15,7 +15,7 @@ function ChoosePokemon()
     useEffect(() => {
         const getData = async () => 
         {
-            const list = await CallPokeAPI(1);
+            const list = await CallPokeAPI(20);
             
             console.log(list)
     
@@ -33,19 +33,19 @@ function ChoosePokemon()
 
             <S.PokeList>
                 {
-                    /* pokemonData.map((element, index) => {
+                    pokemonData.map((element, index) => {
                         return (
                             <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
                         )
-                    }) */
+                    })
                 }
                 {
-                    pokemonList.list.map((element: any, index: number) => 
+                    /* pokemonList.list.map((element: any, index: number) => 
                     {
                         
                             <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
                         
-                    })
+                    }) */
                 }
             </S.PokeList>
         </S.Container>

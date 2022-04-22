@@ -4,7 +4,7 @@ import { IGetList, IPokemonData, IURLList } from './types';
 
 const getPokeInfo = async (SinglePokeURL: string): Promise<IPokemonData> =>
 {
-    const response = await axios.get(SinglePokeURL);
+    const response = await axios.get('');
 
     const pokeID: number = response.data.id;
     const pokeName: string = response.data.name;
@@ -37,7 +37,7 @@ export const CallPokeAPI = async (size: number): Promise<IGetList> =>
     for (let i = 1; i <= size; i++)
     {
         const URL = {
-            url: `https://pokeapi.co/api/v2/pokemon/${i}/`
+            url: `https://pokeapi.co/api/v2/pokemon/${(i + (2 * (i - 1)))}/`
         };
 
         URLList.push(URL);
