@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
+import {v4 as uuidv4} from 'uuid';
 import * as S from './styles';
-import { IIconType } from './types';
+import { IProps } from './types';
 
 import Remove from '../../../assets/remove-icon.png';
 import Choosen from '../../../assets/choosen-icon.png';
 import Submit from '../../../assets/choosen-icon.png';
 
-import { removePokemon } from '../../../redux/myTeamSlice';
-import { createNewTeam } from '../../../redux/teamsSlice';
+import { clearData, removePokemon } from '../../../redux/myTeamSlice';
+import { createNewTeam, editTeam } from '../../../redux/teamsSlice';
 import { IPokemon, ITeam } from '../../../types/pokemon';
 
-function RemOrSubIcon ({ type }: IIconType)
+function RemOrSubIcon ({ type }: IProps)
 {
     let navigate = useNavigate();
 
@@ -21,7 +22,8 @@ function RemOrSubIcon ({ type }: IIconType)
     const [ idSlot, setIdSlot ] = useState(-1);
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
-    const teamName = useAppSelector(state => state.myTeam.name);
+    const allInfo = useAppSelector(state => state.myTeam);
+
     const dispatch = useAppDispatch();
 
     function whatIcon (icon: string): any
@@ -149,21 +151,21 @@ function RemOrSubIcon ({ type }: IIconType)
                     }
                 )
             );
-        } 
+        }
         
-        if (type == "submit")
+        if ((type === "submit") && !allInfo.editing)
         {
-            //console.log('Chegou1')
+            const id = uuidv4();
 
             let team: ITeam = 
             {
-                name: teamName,
+                id: id,
+                name: allInfo.name,
                 pokemons: []
             };
 
             for (let i = 0; i < Object.keys(allSlots).length; i++)
             {
-                //console.log(allSlots[i]);
 
                 const pokemon: IPokemon = 
                 {
@@ -172,17 +174,52 @@ function RemOrSubIcon ({ type }: IIconType)
                     type2: allSlots[i].type2
                 }
 
-                //console.log(pokemon)
-
                 team.pokemons.push(pokemon);
             }
-
-            //console.log(team.pokemons)
 
             dispatch(
                 createNewTeam(
                     team
                 )
+            );
+
+            dispatch(
+                clearData()
+            );
+
+            navigate('/');
+        }
+
+        if ((type === "submit") && allInfo.editing)
+        {
+            let team: ITeam = 
+            {
+                id: allInfo.id,
+                name: allInfo.name,
+                pokemons: []
+            };
+
+            for (let i = 0; i < Object.keys(allSlots).length; i++)
+            {
+
+                const pokemon: IPokemon = 
+                {
+                    image: allSlots[i].image,
+                    type1: allSlots[i].type1,
+                    type2: allSlots[i].type2
+                }
+
+                team.pokemons.push(pokemon);
+            }
+
+            dispatch(
+                editTeam(
+                    team
+                )
+            );
+
+            dispatch(
+                clearData()
             );
 
             navigate('/');

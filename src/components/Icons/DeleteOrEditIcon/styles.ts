@@ -15,13 +15,7 @@ export const Container = styled.div<IStyledProps>`
     align-items: center;
     justify-content: center;
 
-    filter: ${
-        ({ opacityLevel }) => opacityLevel
-    };
-
-    cursor: ${
-        ({ cursor }) => cursor
-    };
+    cursor: pointer;
 `;
 
 export const IconType = styled.img``;

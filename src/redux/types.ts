@@ -7,7 +7,7 @@ export interface ISlot
     selected: boolean;
 }
 
-export interface IRemove
+export interface IRemovePokemon
 {
     id: number;
 }
@@ -15,4 +15,9 @@ export interface IRemove
 export interface ITeamName
 {
     name: string;
+}
+
+export interface IRemoveTeam
+{
+    id: string;
 }
