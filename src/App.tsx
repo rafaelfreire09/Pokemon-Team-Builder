@@ -7,16 +7,14 @@ import Teams from './pages/Teams';
 function App() 
 {
     return (
-        <S.Body>
-            <S.Container>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path='/' element={<Teams/>}></Route>
-                        <Route path='/create-new-team' element={<CreateNewTeam/>}></Route>
-                    </Routes>
-                </BrowserRouter>
-            </S.Container>
-        </S.Body>
+        <S.Container>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Teams/>}></Route>
+                    <Route path='/create-new-team' element={<CreateNewTeam/>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </S.Container>
     );
 }
 

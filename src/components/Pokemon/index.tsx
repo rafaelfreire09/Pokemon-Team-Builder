@@ -23,14 +23,14 @@ function Pokemon({ id, name, image, type1, type2 }: IProps)
 
         for (let i = 0; i < Object.keys(allSlots).length; i++)
         {
-            if (allSlots[i].image == image)
+            if (allSlots[i].image === image)
             {
                 found++;
                 setShowIcon('flex');
             }
         }
 
-        if (found == 0)
+        if (found === 0)
         {
             setShowIcon('none');
         }

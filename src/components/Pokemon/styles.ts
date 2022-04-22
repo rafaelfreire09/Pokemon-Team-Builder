@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { IColorType } from '../../types/color';
-import { IDisplay } from './types';
+import { IStyledProps } from './types';
 
 export const Container = styled.div`
     width: 55px;
@@ -10,7 +10,7 @@ export const Container = styled.div`
     margin: 7px;
 `;
 
-export const Icon = styled.div<IDisplay>`
+export const Icon = styled.div<IStyledProps>`
     display: ${
         ({ setDisplay }) => setDisplay
     };
@@ -40,6 +40,7 @@ export const Id = styled.div`
 export const NumberId = styled.div`
     color: #ffffff;
 
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 9px;
@@ -61,6 +62,9 @@ export const Image = styled.img`
 `;
 
 export const Name = styled.div`
+
+
+    font-style: normal;
     font-size: 10px;
     font-weight: 700;
     text-align: center;

@@ -56,7 +56,7 @@ function PokeSlot({ idP, full }: IProps)
     
     function checkIfRemoved ()
     {
-        if (slot.image != imageURL)
+        if (slot.image !== imageURL)
         {
             setImageURL('');
             setType1('');

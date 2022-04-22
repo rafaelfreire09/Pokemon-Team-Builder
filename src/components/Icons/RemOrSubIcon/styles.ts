@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IStyledProps } from './types';
 
 export const Container = styled.div<IStyledProps>`
-    margin-left: 15px;
+    margin-right: 15px;
 
     width: 40px;
     height: 40px;
@@ -24,4 +24,5 @@ export const Container = styled.div<IStyledProps>`
     };
 `;
 
-export const IconType = styled.img``;
+export const IconType = styled.img`
+`;

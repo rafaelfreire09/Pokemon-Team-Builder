@@ -18,10 +18,10 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.div`
+    margin-top: 12px;
     color: #ffffff;
 
     font-weight: 800;
     font-style: normal;
     font-size: 18px;
-    line-height: 30px;
 `;

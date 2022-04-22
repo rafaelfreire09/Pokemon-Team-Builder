@@ -1,11 +1,7 @@
 import styled from 'styled-components';
+import { IStyledProps } from './types';
 
-interface ColorType
-{
-    colorType: string;
-}
-
-export const Container = styled.div<ColorType>`
+export const Container = styled.div<IStyledProps>`
     width: 300px;
     height: 1px;
 

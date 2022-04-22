@@ -3,8 +3,8 @@ import { useAppDispatch } from '../../../hooks/redux-hooks';
 import * as S from './styles';
 import { IProps } from './types';
 
-import Remove from '../../../assets/remove-icon.png';
-import Submit from '../../../assets/choosen-icon.png';
+import Remove from '../../../assets/cross-icon.png';
+import Edit from '../../../assets/edit-icon.png';
 
 import { deleteTeam } from '../../../redux/teamsSlice';
 import { editTeamCreated } from '../../../redux/myTeamSlice';
@@ -22,7 +22,7 @@ function DeleteOrEditIcon ({ type, team }: IProps)
             return Remove;
         } else
         {
-            return Submit;
+            return Edit;
         }
     }
 
@@ -30,10 +30,10 @@ function DeleteOrEditIcon ({ type, team }: IProps)
     {
         if(color === 'delete')
         {
-            return "#F8635A";
+            return "#ff3232";
         } else
         {
-            return "#6068e2";
+            return "#4854ff";
         }
     }
 

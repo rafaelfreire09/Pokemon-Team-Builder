@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div``;
 
 export const Message = styled.div`
-    margin-top: 15px;
-    font-weight: 700;
     color: #333652;
     text-align: center;
+
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 15px;
 `;
 
 export const TeamsSection = styled.div`
@@ -15,7 +17,7 @@ export const TeamsSection = styled.div`
 
     padding: 0px 5px 0px 5px;
     margin: auto;
-    margin-top: 5px;
+    //margin-top: 5px;
 
     max-height: 680px;
 
@@ -27,7 +29,8 @@ export const SingleTeam = styled.div`
     flex-direction: column;
     align-items: center;
 
-    margin-top: -10px;
+    //margin-top: -10px;
+    margin-bottom: 5px;
 `;
 
 export const LinePosition = styled.div`

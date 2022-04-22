@@ -7,7 +7,7 @@ export interface IProps
     type2: string
 }
 
-export interface IDisplay
+export interface IStyledProps
 {
     setDisplay: string
 }

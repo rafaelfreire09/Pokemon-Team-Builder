@@ -6,12 +6,8 @@ export interface IProps
     full?: IPokemon | null
 }
 
-export interface IGrayScale
+export interface IStyledProps
 {
-    grayScale: string
-}
-
-export interface ICursor
-{
-    cursor: string
+    cursor?: string
+    grayScale?: string
 }

@@ -9,7 +9,6 @@ import PokeSlot from '../PokeSlot';
 import RemOrSubIcon from '../Icons/RemOrSubIcon';
 import DeleteOrEditIcon from '../Icons/DeleteOrEditIcon';
 
-import PenIcon from '../Icons/PenIcon';
 function MyTeam({ team }: IProps) 
 {
     const [ firstMount, setFirstMount ] = useState(true);
@@ -97,8 +96,8 @@ function MyTeam({ team }: IProps)
                 </S.Icons>
                 :
                 <S.Icons>
-                    <RemOrSubIcon type={"remove"}/>
-                    <RemOrSubIcon type={"submit"}/>
+                    <RemOrSubIcon type="remove"/>
+                    <RemOrSubIcon type="create"/>
                 </S.Icons>
             }
         </S.Container>

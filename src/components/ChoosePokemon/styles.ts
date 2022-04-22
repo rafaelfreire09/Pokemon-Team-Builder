@@ -4,10 +4,12 @@ export const Container = styled.div`
     width: 320px;
     height: 395px;
 
-    margin: 21px 40px 13px 15px;
+    margin: 35px 40px 13px 15px;
 `;
 
 export const Text = styled.div`
+    margin-left: 10px;
+
     color: #333652;
     
     font-style: normal;

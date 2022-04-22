@@ -7,7 +7,7 @@ import { IProps } from './types';
 
 import Remove from '../../../assets/remove-icon.png';
 import Choosen from '../../../assets/choosen-icon.png';
-import Submit from '../../../assets/choosen-icon.png';
+import Create from '../../../assets/add-icon.png';
 
 import { clearData, removePokemon } from '../../../redux/myTeamSlice';
 import { createNewTeam, editTeam } from '../../../redux/teamsSlice';
@@ -31,9 +31,9 @@ function RemOrSubIcon ({ type }: IProps)
         if(icon === 'remove')
         {
             return Remove;
-        } else if (icon === 'submit')
+        } else if (icon === 'create')
         {
-            return Submit;
+            return Create;
         } else
         {
             return Choosen;
@@ -44,8 +44,8 @@ function RemOrSubIcon ({ type }: IProps)
     {
         if(color === 'remove')
         {
-            return "#F8635A";
-        } else if (color === 'submit')
+            return "#f86d5a";
+        } else if (color === 'create')
         {
             return "#6068e2";
         } else 
@@ -71,7 +71,7 @@ function RemOrSubIcon ({ type }: IProps)
                 setIdSlot(-1);
             }
 
-        } else if (type === "submit" && action === "send")
+        } else if (type === "create" && action === "send")
         {
             if (activate)
             {
@@ -153,7 +153,7 @@ function RemOrSubIcon ({ type }: IProps)
             );
         }
         
-        if ((type === "submit") && !allInfo.editing)
+        if ((type === "create") && !allInfo.editing)
         {
             const id = uuidv4();
 
@@ -190,7 +190,7 @@ function RemOrSubIcon ({ type }: IProps)
             navigate('/');
         }
 
-        if ((type === "submit") && allInfo.editing)
+        if ((type === "create") && allInfo.editing)
         {
             let team: ITeam = 
             {

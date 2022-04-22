@@ -25,6 +25,7 @@ export const Input = styled.input`
 
     width: 320px;
     
+    font-family: 'Spartan';
     font-style: normal;
     font-weight: 800;
     font-size: 13px;
@@ -39,6 +40,8 @@ export const Input = styled.input`
 `;
 
 export const Text = styled.div`
+    margin-left: 10px;
+
     color: #333652;
     
     font-style: normal;
@@ -59,7 +62,7 @@ export const SlotBottom = styled.div`
 `;
 
 export const Icons = styled.div`
-    margin-top: 20px;
+    margin-top: 10px;
 
     display: flex;
     flex-direction: row;
