@@ -1,29 +1,29 @@
 import { useEffect, useState } from 'react';
 import * as S from './styles';
 
-import { IGetList, IPokemonData } from '../../services/types';
-import { pokemonData } from '../../utils';
+import { IPokemonData } from '../../services/types';
 
 import { CallPokeAPI } from '../../services/api';
 import Pokemon from '../Pokemon';
 
 function ChoosePokemon() 
 {
-    /* const [ pokemonList, setPokemonList ] = useState<any>({ list: [] });
-    const [ loaded, setLoaded] = useState(false);
+    const [ firstLoading, setFirstLoading ] = useState(true);
+    const [ othersLoading, setOthersLoading ] = useState(false);
+
+    const [ pokemonList, setPokemonList ] = useState<IPokemonData[]>([]);
 
     useEffect(() => {
         const getData = async () => 
         {
-            const list = await CallPokeAPI(1);
-            
-            console.log(list)
+            const list = await CallPokeAPI(50);
     
             setPokemonList(list);
+            setFirstLoading(false)
         }
 
         getData();
-    }, [])  */
+    }, [])
    
     return (
         <S.Container>
@@ -31,23 +31,27 @@ function ChoosePokemon()
                 Choose 6 Pokémons:
             </S.Text>
 
-            <S.PokeList>
-                {
-                    pokemonData.map((element, index) => {
-                        return (
-                            <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
-                        )
-                    })
-                }
-                {
-                    /* pokemonList.list.map((element: any, index: number) => 
+            {firstLoading && 
+                <S.Loading_Message>
+                    Loading ...
+                </S.Loading_Message>
+            }
+            
+            <S.Pokemons_Section>
+                <S.Pokemon_List>
                     {
-                        
+                        pokemonList.map((element, index: number) => (
                             <Pokemon key={index} id={element.id} name={element.name} image={element.image} type1={element.type1} type2={element.type2}/>
-                        
-                    }) */
+                        ))
+                    }
+                </S.Pokemon_List>
+                
+                {othersLoading &&
+                    <S.Loading_Message>
+                        Loading ...
+                    </S.Loading_Message>
                 }
-            </S.PokeList>
+            </S.Pokemons_Section>
         </S.Container>
     );
 }

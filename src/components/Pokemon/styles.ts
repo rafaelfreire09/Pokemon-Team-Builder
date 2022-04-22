@@ -7,7 +7,7 @@ export const Container = styled.div`
     width: 55px;
     height: 72px;
 
-    margin: 7px 7px 10px 7px;
+    margin: 7px 9px 10px 9px;
 `;
 
 export const Icon = styled.div<IStyledProps>`

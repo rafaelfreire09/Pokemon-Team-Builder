@@ -15,13 +15,7 @@ export const Text = styled.div`
     font-size: 13px;
 `;
 
-export const PokeList = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    margin: 10px;
-
+export const Pokemons_Section = styled.div`
     max-height: 360px;
 
     overflow-y: scroll;
@@ -41,4 +35,23 @@ export const PokeList = styled.div`
         background-color: #C4C4C4;
         border-radius: 25px;
     }
+`;
+
+export const Pokemon_List = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin: 10px;
+`;
+
+export const Loading_Message = styled.div`
+    color: #333652;
+    text-align: center;
+
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 15px;
+
+
 `;

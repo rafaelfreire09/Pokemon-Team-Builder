@@ -1,40 +1,32 @@
 import axios from "axios";
 
-import { IGetList, IImageGet, IPokemonData, IURLList } from './types';
+import { IPokemonData, IURLList } from './types';
 
-const getPokeInfo = async (SinglePokeURL: string): Promise<IPokemonData> =>
+const getPokeInfo = async (URL: string): Promise<IPokemonData> =>
 {
-    const response = await axios.get(SinglePokeURL);
-
-    const pokeID: number = response.data.id;
-    const pokeName: string = response.data.name;
-
-    const images: IImageGet = response.data.sprites.other;
-    const pokeImage: string = images["official-artwork"].front_default;
-
-    const pokeType1: string = response.data.types[0].type.name;
+    const { data } = await axios.get(URL);
 
     let pokeType2: string = '';
     
     try {
-        pokeType2 = response.data.types[1].type.name;
+        pokeType2 = data.types[1].type.name;
     } catch (error) {
         pokeType2 = '';
     }
 
-    const object: IPokemonData = 
+    const pokemonData: IPokemonData = 
     {
-        id: pokeID,
-        name: pokeName,
-        image: pokeImage,
-        type1: pokeType1,
+        id: data.id,
+        name: data.name,
+        image: data.sprites.other["official-artwork"].front_default,
+        type1: data.types[0].type.name,
         type2: pokeType2,
     }
 
-    return object;
+    return pokemonData;
 }
 
-export const CallPokeAPI = async (size: number): Promise<IGetList> =>
+export const CallPokeAPI = async (size: number): Promise<IPokemonData[]> =>
 {  
     let URLList: IURLList[] = [];
 
@@ -47,16 +39,13 @@ export const CallPokeAPI = async (size: number): Promise<IGetList> =>
         URLList.push(URL);
     }
 
-    let pokemonList: IGetList = { list: [] };
-
-    Promise.all(
-        URLList.map(async (element) => 
-        {
-            const pokemon = await getPokeInfo(element.url);
-
-            pokemonList.list.push(pokemon);
-        })
-    )
-
-    return pokemonList;
+    return Promise.all(
+                URLList.map((element) => 
+                {
+                    return getPokeInfo(element.url)
+                })
+            )
+            .then((pokemonList) => {
+                return pokemonList;
+            });
 }
