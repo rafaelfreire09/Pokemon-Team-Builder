@@ -1,8 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ITeam } from '../types/pokemon';
 import { IRemovePokemon, ISlot, ITeamName } from './types';
 
 const initialState = {
+    id: '',
     name: 'My team',
+    editing: false,
     allTrue: true,
     slot: [
         {
@@ -89,7 +92,7 @@ export const myTeamSlice = createSlice({
             {
                 for (let i = 0; i < Object.keys(state.slot).length; i++)
                 {
-                    if (state.slot[i].image == action.payload.image)
+                    if (state.slot[i].image === action.payload.image)
                     {
                         state.slot[i].selected = true;
                     } else 
@@ -113,7 +116,7 @@ export const myTeamSlice = createSlice({
                 state.allTrue = false;
             } else 
             {
-                if (state.slot[id].selected == true)
+                if (state.slot[id].selected === true)
                 {
                     setAllTrue();
                     state.allTrue = true;
@@ -124,9 +127,40 @@ export const myTeamSlice = createSlice({
                 }
             }
         },
+        editTeamCreated (state, action:PayloadAction<ITeam>)
+        {
+            for (let i = 0; i < Object.keys(state.slot).length; i++)
+            {
+                state.slot[i].image = action.payload.pokemons[i].image
+                state.slot[i].type1 = action.payload.pokemons[i].type1
+                state.slot[i].type2 = action.payload.pokemons[i].type2
+                state.slot[i].selected = true;
+            }
+
+            state.id = action.payload.id;
+            state.name = action.payload.name;
+            state.editing = true;
+
+            console.log(state.slot);
+        },
+        clearData (state, action:PayloadAction)
+        {
+            state.id = '';
+            state.name = 'My team';
+            state.editing = false;
+            state.allTrue = true;
+
+            for (let i = 0; i < Object.keys(state.slot).length; i++)
+            {
+                state.slot[i].image = '';
+                state.slot[i].type1 = '';
+                state.slot[i].type2 = '';
+                state.slot[i].selected = true;
+            }
+        },
     }
 })
 
-export const { changeTeamName, addPokemon, removePokemon, selectPokemon } = myTeamSlice.actions
+export const { changeTeamName, addPokemon, removePokemon, selectPokemon, editTeamCreated, clearData } = myTeamSlice.actions
 
 export default myTeamSlice;

@@ -26,10 +26,21 @@ export const teamsSlice = createSlice({
             console.log(newList);
 
             return newList;
-        }
+        },
+        editTeam: (state, action: PayloadAction<ITeam>) =>
+        {
+            for (let i = 0; i < Object.keys(state).length; i++)
+            {
+                if (state[i].id === action.payload.id)
+                {
+                    state[i].name = action.payload.name;
+                    state[i].pokemons = action.payload.pokemons;
+                }
+            }
+        },
     },
 });
 
-export const { createNewTeam, deleteTeam } = teamsSlice.actions
+export const { createNewTeam, deleteTeam, editTeam } = teamsSlice.actions
 
 export default teamsSlice;

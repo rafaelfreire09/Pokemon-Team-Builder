@@ -9,8 +9,8 @@ import Remove from '../../../assets/remove-icon.png';
 import Choosen from '../../../assets/choosen-icon.png';
 import Submit from '../../../assets/choosen-icon.png';
 
-import { removePokemon } from '../../../redux/myTeamSlice';
-import { createNewTeam } from '../../../redux/teamsSlice';
+import { clearData, removePokemon } from '../../../redux/myTeamSlice';
+import { createNewTeam, editTeam } from '../../../redux/teamsSlice';
 import { IPokemon, ITeam } from '../../../types/pokemon';
 
 function RemOrSubIcon ({ type }: IProps)
@@ -22,7 +22,8 @@ function RemOrSubIcon ({ type }: IProps)
     const [ idSlot, setIdSlot ] = useState(-1);
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
-    const teamName = useAppSelector(state => state.myTeam.name);
+    const allInfo = useAppSelector(state => state.myTeam);
+
     const dispatch = useAppDispatch();
 
     function whatIcon (icon: string): any
@@ -150,16 +151,16 @@ function RemOrSubIcon ({ type }: IProps)
                     }
                 )
             );
-        } 
+        }
         
-        if (type === "submit")
+        if ((type === "submit") && !allInfo.editing)
         {
             const id = uuidv4();
 
             let team: ITeam = 
             {
                 id: id,
-                name: teamName,
+                name: allInfo.name,
                 pokemons: []
             };
 
@@ -180,6 +181,45 @@ function RemOrSubIcon ({ type }: IProps)
                 createNewTeam(
                     team
                 )
+            );
+
+            dispatch(
+                clearData()
+            );
+
+            navigate('/');
+        }
+
+        if ((type === "submit") && allInfo.editing)
+        {
+            let team: ITeam = 
+            {
+                id: allInfo.id,
+                name: allInfo.name,
+                pokemons: []
+            };
+
+            for (let i = 0; i < Object.keys(allSlots).length; i++)
+            {
+
+                const pokemon: IPokemon = 
+                {
+                    image: allSlots[i].image,
+                    type1: allSlots[i].type1,
+                    type2: allSlots[i].type2
+                }
+
+                team.pokemons.push(pokemon);
+            }
+
+            dispatch(
+                editTeam(
+                    team
+                )
+            );
+
+            dispatch(
+                clearData()
             );
 
             navigate('/');

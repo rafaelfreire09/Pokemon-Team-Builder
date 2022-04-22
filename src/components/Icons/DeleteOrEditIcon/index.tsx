@@ -7,6 +7,7 @@ import Remove from '../../../assets/remove-icon.png';
 import Submit from '../../../assets/choosen-icon.png';
 
 import { deleteTeam } from '../../../redux/teamsSlice';
+import { editTeamCreated } from '../../../redux/myTeamSlice';
 
 function DeleteOrEditIcon ({ type, team }: IProps)
 {
@@ -51,7 +52,13 @@ function DeleteOrEditIcon ({ type, team }: IProps)
         
         if (type === "edit")
         {
-            
+            dispatch(
+                editTeamCreated(
+                    team
+                )
+            );
+
+            navigate('/create-new-team');
         }
     }
 

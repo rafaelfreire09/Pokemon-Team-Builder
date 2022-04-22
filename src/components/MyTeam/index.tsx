@@ -1,37 +1,59 @@
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
+import { changeTeamName } from '../../redux/myTeamSlice';
 import * as S from './styles';
 
 import { IProps } from './types';
 
 import PokeSlot from '../PokeSlot';
-import PenIcon from '../Icons/PenIcon';
 import RemOrSubIcon from '../Icons/RemOrSubIcon';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { useAppDispatch } from '../../hooks/redux-hooks';
-import { changeTeamName } from '../../redux/myTeamSlice';
 import DeleteOrEditIcon from '../Icons/DeleteOrEditIcon';
 
-function MyTeam({ text, pen, icons, team }: IProps) 
+import PenIcon from '../Icons/PenIcon';
+function MyTeam({ team }: IProps) 
 {
+    const [ firstMount, setFirstMount ] = useState(true);
+
     const [ teamName, setTeamName ] = useState('');
+    
+    const allInfo = useAppSelector(state => state.myTeam);
     
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        let nameSend = teamName;
-
-        if (teamName === '')
+        if (firstMount)
         {
-            nameSend = 'My team';
+            changeName();
+        } else 
+        {
+            setFirstMount(false);
+
+            let nameSend = teamName;
+
+            if (teamName === '')
+            {
+                nameSend = 'My team';
+            }
+
+            dispatch(
+                changeTeamName(
+                    {
+                        name: nameSend
+                    }
+                )
+            )
         }
 
-        dispatch(
-            changeTeamName(
-                {
-                    name: nameSend
-                }
-            )
-        )
+        setFirstMount(false);
     }, [teamName])
+
+    function changeName ()
+    {
+        if (allInfo.editing)
+        {
+            setTeamName(allInfo.name);
+        }
+    }
 
     const handleTeamNameInput = (event: ChangeEvent<HTMLInputElement>) => {
         setTeamName(event.target.value)
@@ -41,9 +63,13 @@ function MyTeam({ text, pen, icons, team }: IProps)
     return (
         <S.Container>
             <S.Title>
-                {text && 
+                {team?.name ?
+                    <S.Text>
+                        {team?.name}
+                    </S.Text>
+                    :
                     <S.Input
-                        placeholder={text}
+                        placeholder="Type a name here"
                         type="text"  
                         onChange={handleTeamNameInput}
                         value={teamName}
@@ -51,12 +77,6 @@ function MyTeam({ text, pen, icons, team }: IProps)
                         //onsearch={handleTeamNameInput}  
                     />
                 }
-                {team?.name && 
-                    <S.Text>
-                        {team?.name}
-                    </S.Text>
-                }
-                {/* pen && <PenIcon /> */}
             </S.Title>
 
             <S.SlotTop>
@@ -71,16 +91,15 @@ function MyTeam({ text, pen, icons, team }: IProps)
                 <PokeSlot idP={5} full={team?.pokemons[5]}/>
             </S.SlotBottom>
 
-            {icons && 
+            {team?.name ? 
+                <S.Icons>
+                    <DeleteOrEditIcon type="delete" team={team}/>
+                    <DeleteOrEditIcon type="edit" team={team}/>
+                </S.Icons>
+                :
                 <S.Icons>
                     <RemOrSubIcon type={"remove"}/>
                     <RemOrSubIcon type={"submit"}/>
-                </S.Icons>
-            }
-
-            {team?.name && 
-                <S.Icons>
-                    <DeleteOrEditIcon type="delete" team={team}/>
                 </S.Icons>
             }
         </S.Container>

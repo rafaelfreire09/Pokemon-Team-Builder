@@ -8,6 +8,8 @@ import { addPokemon, selectPokemon } from '../../redux/myTeamSlice';
 
 function PokeSlot({ idP, full }: IProps) 
 {
+    const [ firstMount, setFirstMount ] = useState(true);
+    
     const [ imageURL, setImageURL ] = useState('');
     const [ type1, setType1 ] = useState('');
     const [ type2, setType2 ] = useState('');
@@ -17,6 +19,51 @@ function PokeSlot({ idP, full }: IProps)
     const dispatch = useAppDispatch();
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
+    const ifEditing = useAppSelector(state => state.myTeam.editing);
+
+    useEffect(() => {
+        checkIfSelected();
+        checkIfRemoved();
+    }, [allSlots]);
+
+    useEffect(() => {
+        if (firstMount)
+        {
+            checkIfUpdated();
+        } else 
+        {
+            setFirstMount(false);
+            dispatch(
+                addPokemon(
+                    {
+                        id: idP,
+                        image: imageURL,
+                        type1: getName(type1),
+                        type2: getName(type2),
+                        selected: true
+                    }
+                )
+            );
+        }
+
+        setFirstMount(false);
+    }, [imageURL]);
+
+    function checkIfUpdated ()
+    {
+        if (ifEditing)
+        {
+            if (allSlots[idP].image)
+            {
+                setImageURL(allSlots[idP].image);
+                setType1(getColor(allSlots[idP].type1));
+                setType2(getColor(allSlots[idP].type2));
+            } else 
+            {
+                console.log('chegou1');
+            }
+        }
+    }
 
     function checkIfSelected()
     {
@@ -84,25 +131,6 @@ function PokeSlot({ idP, full }: IProps)
             )
         );
     }
-
-    useEffect(() => {
-        dispatch(
-            addPokemon(
-                {
-                    id: idP,
-                    image: imageURL,
-                    type1: getName(type1),
-                    type2: getName(type2),
-                    selected: true
-                }
-            )
-        );
-    }, [ imageURL ])
-
-    useEffect(() => {
-        checkIfSelected();
-        checkIfRemoved();
-    }, [allSlots]);
     
     return (
         <S.Container grayScale={grayScaleState} onDragOver={enableDropping} onDrop={handleDrop}>
