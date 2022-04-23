@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as S from './styles';
 
 import { IPokemonData } from '../../services/types';
@@ -13,17 +13,50 @@ function ChoosePokemon()
 
     const [ pokemonList, setPokemonList ] = useState<IPokemonData[]>([]);
 
+    const [isBottom, setIsBottom] = useState(false);
+    const elementRef = useRef<HTMLDivElement>(null);
+
+    const amountToGet = 20;
+
     useEffect(() => {
         const getData = async () => 
         {
-            const list = await CallPokeAPI(50);
-    
+            const list = await CallPokeAPI(amountToGet);
+            
             setPokemonList(list);
             setFirstLoading(false)
         }
 
         getData();
-    }, [])
+    }, []);
+
+    useLayoutEffect(() => {
+        const loadItems = async () =>
+        {
+            setOthersLoading(true);
+            
+            const newList = await CallPokeAPI(amountToGet);
+            
+            const finalList = pokemonList.concat(newList)
+            
+            setPokemonList(finalList);
+            setOthersLoading(false);
+        }
+
+        if(isBottom) 
+        {
+            loadItems();
+            setIsBottom(false);
+        }
+    }, [isBottom]);
+
+    const handleScroll = () => {
+        const scroller: any = elementRef.current;
+
+        if (scroller.scrollHeight - scroller.scrollTop === scroller.clientHeight) {
+            setIsBottom(true);
+        }
+    }
    
     return (
         <S.Container>
@@ -37,7 +70,10 @@ function ChoosePokemon()
                 </S.Loading_Message>
             }
             
-            <S.Pokemons_Section>
+            <S.Pokemons_Section
+                ref={elementRef}
+                onScroll={handleScroll}
+            >
                 <S.Pokemon_List>
                     {
                         pokemonList.map((element, index: number) => (

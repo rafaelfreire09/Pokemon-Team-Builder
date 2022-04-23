@@ -2,6 +2,22 @@ import axios from "axios";
 
 import { IPokemonData, IURLList } from './types';
 
+const getURLs = (size: number): IURLList[] => 
+{
+    let list: IURLList[] = [];
+
+    for (let i = 1; i <= size; i++)
+    {
+        const URL = {
+            url: `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 900) + 1}/`
+        };
+
+        list.push(URL);
+    }
+
+    return list;
+}
+
 const getPokeInfo = async (URL: string): Promise<IPokemonData> =>
 {
     const { data } = await axios.get(URL);
@@ -28,16 +44,7 @@ const getPokeInfo = async (URL: string): Promise<IPokemonData> =>
 
 export const CallPokeAPI = async (size: number): Promise<IPokemonData[]> =>
 {  
-    let URLList: IURLList[] = [];
-
-    for (let i = 1; i <= size; i++)
-    {
-        const URL = {
-            url: `https://pokeapi.co/api/v2/pokemon/${(i + (2 * (i - 1)))}/`
-        };
-
-        URLList.push(URL);
-    }
+    const URLList = getURLs(size);
 
     return Promise.all(
                 URLList.map((element) => 
