@@ -13,11 +13,14 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 800;
     font-size: 13px;
+
+    margin-bottom: 10px;
 `;
 
 export const Pokemons_Section = styled.div`
-    max-height: 360px;
+    max-height: 378px;
 
+    overflow-x: hidden;
     overflow-y: scroll;
 
     scrollbar-width: thin;
@@ -42,7 +45,7 @@ export const Pokemon_List = styled.div`
     flex-wrap: wrap;
     justify-content: flex-start;
 
-    margin: 10px;
+    margin: 0px 7px 10px 7px;
 `;
 
 export const Loading_Message = styled.div`
@@ -52,6 +55,4 @@ export const Loading_Message = styled.div`
     margin-top: 30px;
     font-weight: 700;
     font-size: 15px;
-
-
 `;

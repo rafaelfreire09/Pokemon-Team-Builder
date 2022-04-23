@@ -7,7 +7,6 @@ import Header from '../../components/Header';
 import MyTeam from '../../components/MyTeam';
 import Line from '../../components/Line';
 
-//import { teamsData } from '../../utils';
 import { ITeam } from '../../types/pokemon';
 
 function Teams() 
@@ -66,18 +65,6 @@ function Teams()
                         )
                     })
                 }
-                {/* {
-                    teamsData.map((element, index) => {
-                        return (
-                            <S.SingleTeam key={index}>
-                                <MyTeam team={element} />
-                                <S.LinePosition>
-                                    <Line color='#333652'/>
-                                </S.LinePosition>
-                            </S.SingleTeam>
-                        )
-                    })
-                } */}
             </S.TeamsSection>
         </S.Container>
     );

@@ -1,19 +1,18 @@
 # 👾 Pokemon Team Builder
 
-Test it yourself: https://pokemon-team-builder-five.vercel.app/
+-> Test it yourself: https://pokemon-team-builder-five.vercel.app/
 
-<img src="./github/screen1.png" alt="drawing" style="width:200px; height: 430px;"/>
-<img src="./github/screen2.png" alt="drawing" style="width:200px; height: 430px;"/>
+<p> <img src="./github/screen2.png" alt="drawing" style="width:200px; height: 430px;"/> <img src="./github/screen3.png" alt="drawing" style="width:200px; height: 430px;"/> <img src="./github/screen4.png" alt="drawing" style="width:200px; height: 430px;"/> </p>
 
-## Tecnologies
+## 🛠️ Tecnologies:
 
 - Typescript
 - React
 - Styled Components
-- Redux
+- Redux Toolkit
 - Axios
 
-## Installation
+## ⚙️ Installation:
 
 1. First, if you dont have Git installed, download the zip file and extract him. If you have, clone the repository:
 

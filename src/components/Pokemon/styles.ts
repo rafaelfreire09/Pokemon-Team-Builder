@@ -7,7 +7,7 @@ export const Container = styled.div`
     width: 55px;
     height: 72px;
 
-    margin: 7px 9px 10px 9px;
+    margin: 7px 10px 14px 9px;
 `;
 
 export const Icon = styled.div<IStyledProps>`
@@ -43,7 +43,7 @@ export const NumberId = styled.div`
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 9px;
+    font-size: 6px;
 `;
 
 export const Image = styled.img`

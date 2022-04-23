@@ -17,10 +17,10 @@ export const TeamsSection = styled.div`
 
     padding: 0px 5px 0px 5px;
     margin: auto;
-    margin-top: 20px;
 
-    max-height: 680px;
+    max-height: 700px;
 
+    overflow-x: hidden;
     overflow-y: scroll;
 
     scrollbar-width: thin;
@@ -45,8 +45,8 @@ export const SingleTeam = styled.div`
     flex-direction: column;
     align-items: center;
 
-    margin-top: -10px;
-    margin-bottom: 5px;
+    //margin-top: -10px;
+    //margin-bottom: 5px;
 `;
 
 export const LinePosition = styled.div`
