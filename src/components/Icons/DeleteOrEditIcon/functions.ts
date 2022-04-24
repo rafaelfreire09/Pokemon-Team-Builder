@@ -2,11 +2,10 @@ import { NavigateFunction } from "react-router-dom";
 
 import { editTeamCreated } from "../../../redux/myTeamSlice";
 import { deleteTeam } from "../../../redux/teamsSlice";
-import { ITeam } from "../../../types/pokemon";
+import { Team } from "../../../types/pokemon";
 
-export function Delete (team: ITeam, dispatch: any)
+export function DeleteTeam (team: Team, dispatch: any)
 {
-
     dispatch(
         deleteTeam(
             {
@@ -16,7 +15,7 @@ export function Delete (team: ITeam, dispatch: any)
     );
 }
 
-export function Edit (team: ITeam, dispatch: any, navigate: NavigateFunction)
+export function EditTeam (team: Team, dispatch: any, navigate: NavigateFunction)
 {
     dispatch(
         editTeamCreated(

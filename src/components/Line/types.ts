@@ -1,9 +1,9 @@
-export interface IProps
+export type Props =
 {
     color: string;
 }
 
-export interface IStyledProps
+export type StyledProps =
 {
     colorType: string;
 }

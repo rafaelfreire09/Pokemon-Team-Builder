@@ -1,6 +1,6 @@
-import { ITeam } from "../../types/pokemon";
+import { Team } from "../../types/pokemon";
 
-export interface IProps
+export type Props =
 {
-    team?: ITeam;
+    team?: Team;
 }

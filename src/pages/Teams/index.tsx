@@ -7,13 +7,13 @@ import Header from '../../components/Header';
 import MyTeam from '../../components/MyTeam';
 import Line from '../../components/Line';
 
-import { ITeam } from '../../types/pokemon';
+import { Team } from '../../types/pokemon';
 
 function Teams() 
 {
     const teamsStore = useAppSelector(state => state.teams);
 
-    const [ teams, setTeams ] = useState<ITeam[]>([]);
+    const [ teams, setTeams ] = useState<Team[]>([]);
     const [ showMessage, setShowMessage ] = useState(true);
 
     useEffect(() => {

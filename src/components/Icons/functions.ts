@@ -1,12 +1,18 @@
 import { EIcon } from '../../types/icon';
 
-import RemoveIcon from '../../assets/remove-icon.png';
-import CreateIcon from '../../assets/add-icon.png';
-import DeleteIcon from '../../assets/cross-icon.png';
+import ClearIcon from '../../assets/remove-icon.png';
+import RemoveIcon from '../../assets/minus-icon.png';
+import CreateIcon from '../../assets/right-arrow-icon.png';
+import DeleteIcon from '../../assets/remove-icon.png';
 import EditIcon from '../../assets/edit-icon.png';
 
 export function whatIcon (icon: string): string
 {
+    if (icon === 'clear')
+    {
+        return ClearIcon;
+    }
+
     if (icon === 'remove')
     {
         return RemoveIcon;
@@ -32,9 +38,14 @@ export function whatIcon (icon: string): string
 
 export function whatColor (color: EIcon): string
 {
+    if(color === 'clear')
+    {
+        return "#ff3232";
+    }
+
     if(color === 'remove')
     {
-        return "#f86d5a";
+        return "#e9a246";
     }
     
     if (color === 'create')

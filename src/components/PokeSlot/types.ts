@@ -1,12 +1,12 @@
-import { IPokemon } from "../../types/pokemon";
+import { Pokemon } from "../../types/pokemon";
 
-export interface IProps
+export type Props =
 {
     idP: number;
-    full?: IPokemon | null
+    full?: Pokemon | null
 }
 
-export interface IStyledProps
+export type StyledProps =
 {
     cursor?: string
     grayScale?: string

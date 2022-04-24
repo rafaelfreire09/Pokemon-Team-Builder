@@ -5,16 +5,20 @@ import * as S from './styles';
 import ChooseIcon from '../Icons/ChoosenIcon';
 
 import { getColor } from '../../utils';
-import { IProps } from './types';
+import { Props } from './types';
 import { addPokemon } from '../../redux/myTeamSlice';
 
-function Pokemon({ id, name, image, type1, type2 }: IProps) 
+function Pokemon({ id, name, image, type1, type2 }: Props) 
 {
     const [ showIcon, setShowIcon ] = useState('none');
 
     const allSlots = useAppSelector(state => state.myTeam.slot);
 
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        getIdSlot();
+    }, [allSlots]);
 
     // If the pokemon is there in some slot, show icon 
     function getIdSlot()
@@ -58,27 +62,28 @@ function Pokemon({ id, name, image, type1, type2 }: IProps)
         }
     }
 
+    function AddPokemon ()
+    {
+        dispatch(
+            addPokemon(
+                {
+                    id: id,
+                    image: image,
+                    type1: type1,
+                    type2: type2,
+                    selected: true
+                }
+            )
+        );
+    }
+
     const handleClick = () => 
     {
         if (!checkIfFull())
         {
-            dispatch(
-                addPokemon(
-                    {
-                        id: id,
-                        image: image,
-                        type1: type1,
-                        type2: type2,
-                        selected: true
-                    }
-                )
-            );
+            AddPokemon();
         }
     }
-
-    useEffect(() => {
-        getIdSlot();
-    }, [allSlots]);
     
     return (
         <S.Container>

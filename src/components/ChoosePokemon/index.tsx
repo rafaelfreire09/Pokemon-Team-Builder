@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as S from './styles';
 
-import { IPokemonData } from '../../services/types';
+import { PokemonData } from '../../services/types';
 
 import { CallPokeAPI } from '../../services/api';
 import Pokemon from '../Pokemon';
@@ -11,7 +11,7 @@ function ChoosePokemon()
     const [ firstLoading, setFirstLoading ] = useState(true);
     const [ othersLoading, setOthersLoading ] = useState(false);
 
-    const [ pokemonList, setPokemonList ] = useState<IPokemonData[]>([]);
+    const [ pokemonList, setPokemonList ] = useState<PokemonData[]>([]);
 
     const [isBottom, setIsBottom] = useState(false);
     const elementRef = useRef<HTMLDivElement>(null);

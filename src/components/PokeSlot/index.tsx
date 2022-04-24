@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import * as S from './styles';
-import { IProps } from './types';
+import { Props } from './types';
 
 import { getColor } from '../../utils';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { selectPokemon } from '../../redux/myTeamSlice';
 
-function PokeSlot({ idP, full }: IProps) 
+function PokeSlot({ idP, full }: Props) 
 {
     const [ imageURL, setImageURL ] = useState('');
     const [ type1, setType1 ] = useState('');
@@ -80,7 +80,7 @@ function PokeSlot({ idP, full }: IProps)
         return colorType ? colorType : '#ffffff';
     }
 
-    const handleClick = () => 
+    function SelectPokemon ()
     {
         dispatch(
             selectPokemon(
@@ -90,6 +90,11 @@ function PokeSlot({ idP, full }: IProps)
                 }
             )
         );
+    }
+
+    const handleClick = () => 
+    {
+        SelectPokemon();
     }
     
     return (

@@ -1,4 +1,4 @@
-export interface IProps
+export type Props =
 {
     id: number,
     name: string,
@@ -7,7 +7,7 @@ export interface IProps
     type2: string
 }
 
-export interface IStyledProps
+export type StyledProps =
 {
     setDisplay: string
 }

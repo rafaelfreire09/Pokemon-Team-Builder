@@ -3,15 +3,15 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { changeTeamName } from '../../redux/myTeamSlice';
 import * as S from './styles';
 
-import { IProps } from './types';
+import { Props } from './types';
 
 import PokeSlot from '../PokeSlot';
-import RemOrSubIcon from '../Icons/RemoveOrCreateIcon';
+import RemoveOrCreateIcon from '../Icons/RemoveOrCreateIcon';
 import DeleteOrEditIcon from '../Icons/DeleteOrEditIcon';
 
 import { EIcon } from '../../types/icon'
 
-function MyTeam({ team }: IProps) 
+function MyTeam({ team }: Props) 
 {
     const [ firstMount, setFirstMount ] = useState(true);
 
@@ -91,13 +91,23 @@ function MyTeam({ team }: IProps)
 
             {team?.name ? 
                 <S.Icons>
-                    <DeleteOrEditIcon type={EIcon.Delete} team={team}/>
-                    <DeleteOrEditIcon type={EIcon.Edit} team={team}/>
+                    <S.IconsLeft>
+
+                    </S.IconsLeft>
+                    <S.IconsRight>
+                        <DeleteOrEditIcon type={EIcon.Delete} team={team}/>
+                        <DeleteOrEditIcon type={EIcon.Edit} team={team}/>
+                    </S.IconsRight>
                 </S.Icons>
                 :
                 <S.Icons>
-                    <RemOrSubIcon type={EIcon.Remove}/>
-                    <RemOrSubIcon type={EIcon.Create}/>
+                    <S.IconsLeft>
+                        <RemoveOrCreateIcon type={EIcon.Clear}/>
+                    </S.IconsLeft>
+                    <S.IconsRight>
+                        <RemoveOrCreateIcon type={EIcon.Remove}/>
+                        <RemoveOrCreateIcon type={EIcon.Create}/>
+                    </S.IconsRight>
                 </S.Icons>
             }
         </S.Container>

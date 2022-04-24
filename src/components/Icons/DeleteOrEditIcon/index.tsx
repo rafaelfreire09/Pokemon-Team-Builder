@@ -4,7 +4,7 @@ import * as S from './styles';
 import { Props } from './types';
 
 import { whatColor, whatIcon } from '../functions';
-import { Delete, Edit } from './functions';
+import { DeleteTeam, EditTeam } from './functions';
 
 function DeleteOrEditIcon ({ type, team }: Props)
 {
@@ -16,12 +16,12 @@ function DeleteOrEditIcon ({ type, team }: Props)
     {
         if (type === "delete")
         {
-            Delete(team, dispatch);
+            DeleteTeam(team, dispatch);
         } 
         
         if (type === "edit")
         {
-            Edit(team, dispatch, navigate);
+            EditTeam(team, dispatch, navigate);
         }
     }
 

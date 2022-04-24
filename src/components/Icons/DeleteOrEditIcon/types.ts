@@ -1,10 +1,10 @@
 import { EIcon } from "../../../types/icon"
-import { ITeam } from "../../../types/pokemon"
+import { Team } from "../../../types/pokemon"
 
 export type Props =
 {
     type: EIcon
-    team: ITeam
+    team: Team
 }
 
 export type StyledProps =

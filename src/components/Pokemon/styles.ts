@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { IColorType } from '../../types/color';
-import { IStyledProps } from './types';
+import { Color } from '../../types/color';
+import { StyledProps } from './types';
 
 export const Container = styled.div`
     width: 55px;
@@ -10,7 +10,7 @@ export const Container = styled.div`
     margin: 7px 10px 14px 9px;
 `;
 
-export const Icon = styled.div<IStyledProps>`
+export const Icon = styled.div<StyledProps>`
     display: ${
         ({ setDisplay }) => setDisplay
     };
@@ -76,7 +76,7 @@ export const Colors = styled.div`
     margin-top: 7px;
 `;
 
-export const ColorRight = styled.div<IColorType>`
+export const ColorRight = styled.div<Color>`
     width: 48%;
     height: 2px;
     background-color: ${
@@ -84,7 +84,7 @@ export const ColorRight = styled.div<IColorType>`
     };
 `;
 
-export const ColorLeft = styled.div<IColorType>`
+export const ColorLeft = styled.div<Color>`
     width: 48%;
     height: 2px;
     background-color: ${

@@ -1,10 +1,10 @@
 import axios from "axios";
 
-import { IPokemonData, IURLList } from './types';
+import { PokemonData, URLList } from './types';
 
-const getURLs = (size: number): IURLList[] => 
+const getURLs = (size: number): URLList[] => 
 {
-    let list: IURLList[] = [];
+    let list: URLList[] = [];
 
     for (let i = 1; i <= size; i++)
     {
@@ -18,7 +18,7 @@ const getURLs = (size: number): IURLList[] =>
     return list;
 }
 
-const getPokeInfo = async (URL: string): Promise<IPokemonData> =>
+const getPokeInfo = async (URL: string): Promise<PokemonData> =>
 {
     const { data } = await axios.get(URL);
 
@@ -30,7 +30,7 @@ const getPokeInfo = async (URL: string): Promise<IPokemonData> =>
         pokeType2 = '';
     }
 
-    const pokemonData: IPokemonData = 
+    const pokemonData: PokemonData = 
     {
         id: data.id,
         name: data.name,
@@ -42,7 +42,7 @@ const getPokeInfo = async (URL: string): Promise<IPokemonData> =>
     return pokemonData;
 }
 
-export const CallPokeAPI = async (size: number): Promise<IPokemonData[]> =>
+export const CallPokeAPI = async (size: number): Promise<PokemonData[]> =>
 {  
     const URLList = getURLs(size);
 

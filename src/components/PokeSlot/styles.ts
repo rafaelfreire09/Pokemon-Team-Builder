@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { IStyledProps } from './types';
-import { IColorType } from '../../types/color';
+import { StyledProps } from './types';
+import { Color } from '../../types/color';
 
-export const Container = styled.div<IStyledProps>`
+export const Container = styled.div<StyledProps>`
     margin: 10px 0px 10px 30px;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ export const Container = styled.div<IStyledProps>`
     };
 `;
 
-export const Image = styled.img<IStyledProps>`
+export const Image = styled.img<StyledProps>`
     width: 85px;
     height: 85px;
 
@@ -62,7 +62,7 @@ export const DivisionCircle = styled.div`
     margin-top: 100%;
 `;
 
-export const BallTop = styled.div<IColorType>`
+export const BallTop = styled.div<Color>`
     background-color: ${
         ({ color }) => color
     };
@@ -75,7 +75,7 @@ export const BallTop = styled.div<IColorType>`
     border-top-right-radius: 68px;
 `;
 
-export const BallBottom = styled.div<IColorType>`
+export const BallBottom = styled.div<Color>`
     background-color: ${
         ({ color }) => color
     };

@@ -1,9 +1,9 @@
 import * as S from './styles';
-import { IProps } from './types';
+import { Props } from './types';
 
 import Line from '../Line';
 
-function Header({ children }: IProps) 
+function Header({ children }: Props) 
 {
     return (
         <S.Container>

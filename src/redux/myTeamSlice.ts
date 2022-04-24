@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ITeam } from '../types/pokemon';
-import { IMyTeam, IRemovePokemon, IAddPokemon, IChangeTeamName, ISelectPokemon } from './types';
+import { Team } from '../types/pokemon';
+import { MyTeam, RemovePokemon, AddPokemon, ChangeTeamName, SelectPokemon, ClearTeam } from './types';
 
-const initialState: IMyTeam = {
+const initialState: MyTeam = {
     id: '',
     name: 'My team',
     editing: false,
@@ -51,11 +51,11 @@ export const myTeamSlice = createSlice({
     name: 'myteam',
     initialState: initialState,
     reducers: {
-        changeTeamName (state, action:PayloadAction<IChangeTeamName>)
+        changeTeamName (state, action:PayloadAction<ChangeTeamName>)
         {
             state.name = action.payload.name;
         },
-        addPokemon (state, action:PayloadAction<IAddPokemon>)
+        addPokemon (state, action:PayloadAction<AddPokemon>)
         {
             //const id = action.payload.id;
             let id = -1;
@@ -79,7 +79,7 @@ export const myTeamSlice = createSlice({
                 state.slot[i].selected = true;
             }
         },
-        removePokemon (state, action:PayloadAction<IRemovePokemon>)
+        removePokemon (state, action:PayloadAction<RemovePokemon>)
         {
             const id = action.payload.id;
 
@@ -94,7 +94,7 @@ export const myTeamSlice = createSlice({
                 state.slot[i].selected = true;
             }
         },
-        selectPokemon (state, action:PayloadAction<ISelectPokemon>)
+        selectPokemon (state, action:PayloadAction<SelectPokemon>)
         {
             let id = action.payload.id;
 
@@ -137,7 +137,7 @@ export const myTeamSlice = createSlice({
                 }
             }
         },
-        editTeamCreated (state, action:PayloadAction<ITeam>)
+        editTeamCreated (state, action:PayloadAction<Team>)
         {
             for (let i = 0; i < Object.keys(state.slot).length; i++)
             {
@@ -151,11 +151,15 @@ export const myTeamSlice = createSlice({
             state.name = action.payload.name;
             state.editing = true;
         },
-        clearData (state, action:PayloadAction)
+        clearData (state, action:PayloadAction<ClearTeam>)
         {
+            if (action.payload.clearName)
+            {
+                state.name = 'My team';
+                state.editing = false;
+            }
+
             state.id = '';
-            state.name = 'My team';
-            state.editing = false;
             state.allTrue = true;
 
             for (let i = 0; i < Object.keys(state.slot).length; i++)

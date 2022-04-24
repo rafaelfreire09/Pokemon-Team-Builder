@@ -39,8 +39,6 @@ export const Input = styled.input`
 `;
 
 export const Text = styled.div`
-    //margin-left: 10px;
-
     color: #333652;
     
     font-style: normal;
@@ -65,5 +63,15 @@ export const Icons = styled.div`
 
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
+`;
+
+export const IconsLeft = styled.div`
+    margin-left: 40px;
+`;
+
+export const IconsRight = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;

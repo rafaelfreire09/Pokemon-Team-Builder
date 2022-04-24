@@ -2,13 +2,24 @@ import { NavigateFunction } from "react-router-dom";
 
 import {v4 as uuidv4} from 'uuid';
 
-import { IMyTeam, ISlot } from "../../../redux/types";
-import { IPokemon, ITeam } from "../../../types/pokemon";
+import { MyTeam, Slot } from "../../../redux/types";
+import { Pokemon, Team } from "../../../types/pokemon";
 
 import { clearData, removePokemon } from "../../../redux/myTeamSlice";
 import { createNewTeam, editTeam } from "../../../redux/teamsSlice";
 
-export function Remove (idSlot: number, dispatch: any)
+export function ClearSlots (dispatch: any)
+{
+    dispatch(
+        clearData(
+            {
+                clearName: false
+            }
+        )
+    );
+}
+
+export function RemoveTeam (idSlot: number, dispatch: any)
 {
     dispatch(
         removePokemon(
@@ -19,7 +30,7 @@ export function Remove (idSlot: number, dispatch: any)
     );
 }
 
-export function Create (editing: boolean, allInfo: IMyTeam, allSlots: ISlot[], dispatch: any, navigate: NavigateFunction)
+export function CreateTeam (editing: boolean, allInfo: MyTeam, allSlots: Slot[], dispatch: any, navigate: NavigateFunction)
 {
     let id = '';
 
@@ -31,7 +42,7 @@ export function Create (editing: boolean, allInfo: IMyTeam, allSlots: ISlot[], d
         id = uuidv4();
     }
 
-    let team: ITeam = 
+    let team: Team = 
     {
         id: id,
         name: allInfo.name,
@@ -41,7 +52,7 @@ export function Create (editing: boolean, allInfo: IMyTeam, allSlots: ISlot[], d
     for (let i = 0; i < Object.keys(allSlots).length; i++)
     {
 
-        const pokemon: IPokemon = 
+        const pokemon: Pokemon = 
         {
             image: allSlots[i].image,
             type1: allSlots[i].type1,
@@ -68,7 +79,11 @@ export function Create (editing: boolean, allInfo: IMyTeam, allSlots: ISlot[], d
     }
 
     dispatch(
-        clearData()
+        clearData(
+            {
+                clearName: true
+            }
+        )
     );
 
     navigate('/');

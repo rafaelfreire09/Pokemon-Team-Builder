@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ITeam } from '../types/pokemon';
-import { IRemoveTeam } from './types';
+import { Team } from '../types/pokemon';
+import { RemoveTeam } from './types';
 
-const initialState: ITeam[] = [];
+const initialState: Team[] = [];
 
 export const teamsSlice = createSlice({
     name: 'teams',
     initialState: initialState,
     reducers: 
     {
-        createNewTeam: (state, action: PayloadAction<ITeam>) =>
+        createNewTeam: (state, action: PayloadAction<Team>) =>
         {
             state.push(action.payload);
         },
-        deleteTeam: (state, action: PayloadAction<IRemoveTeam>) =>
+        deleteTeam: (state, action: PayloadAction<RemoveTeam>) =>
         {
-            function checkIfNotEqual (team: ITeam): boolean
+            function checkIfNotEqual (team: Team): boolean
             {
                 return team.id !== action.payload.id
             }
@@ -25,7 +25,7 @@ export const teamsSlice = createSlice({
 
             return newList;
         },
-        editTeam: (state, action: PayloadAction<ITeam>) =>
+        editTeam: (state, action: PayloadAction<Team>) =>
         {
             for (let i = 0; i < Object.keys(state).length; i++)
             {

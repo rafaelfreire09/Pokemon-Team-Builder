@@ -1,7 +1,7 @@
 import * as S from './styles';
-import { IProps } from './types';
+import { Props } from './types';
 
-function Line({ color }: IProps) 
+function Line({ color }: Props) 
 {
     return (
         <S.Container colorType={color} />

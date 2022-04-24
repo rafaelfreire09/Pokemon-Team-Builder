@@ -6,7 +6,7 @@ import * as S from './styles';
 import { Props } from './types';
 
 import { whatColor, whatIcon } from '../functions';
-import { Create, Remove } from './functions';
+import { ClearSlots, CreateTeam, RemoveTeam } from './functions';
 
 function RemoveOrCreateIcon ({ type }: Props)
 {
@@ -23,6 +23,7 @@ function RemoveOrCreateIcon ({ type }: Props)
     useEffect(() => {
         checkIfSelected();
         checkIfFull();
+        checkIfThereLeastOne();
     }, [allSlots]);
 
     // Received the params to change the visibility of icon
@@ -42,7 +43,22 @@ function RemoveOrCreateIcon ({ type }: Props)
                 setIdSlot(-1);
             }
 
-        } else if (type === "create" && action === "send")
+        }
+        
+        if (type === "create" && action === "send")
+        {
+            if (activate)
+            {
+                setOpacityState("opacity(100%)");
+                setCursor("pointer");
+            } else 
+            {
+                setOpacityState("opacity(40%)");
+                setCursor("default");
+            }
+        }
+
+        if (type === "clear")
         {
             if (activate)
             {
@@ -111,21 +127,50 @@ function RemoveOrCreateIcon ({ type }: Props)
         }
     }
 
+    // Check if all slots are fulfilled
+    function checkIfThereLeastOne ()
+    {
+        let found = 0;
+        const action = "";
+
+        for (let i = 0; i < Object.keys(allSlots).length; i++)
+        {
+            if (allSlots[i].image)
+            {
+                found++;
+                break;
+            }
+        }
+
+        if (found !== 0)
+        {
+            whatType(action, type, true, -1);
+        } else 
+        {
+            whatType(action, type, false, -1);
+        }
+    }
+
     const handleClick = () => 
     {
+        if (type === "clear")
+        {
+            ClearSlots(dispatch);
+        }
+
         if ((type === "remove") && (idSlot !== -1))
         {
-            Remove(idSlot, dispatch);
+            RemoveTeam(idSlot, dispatch);
         }
         
         if ((type === "create") && !allInfo.editing)
         {
-            Create(false, allInfo, allSlots, dispatch, navigate);
+            CreateTeam(false, allInfo, allSlots, dispatch, navigate);
         }
 
         if ((type === "create") && allInfo.editing)
         {
-            Create(true, allInfo, allSlots, dispatch, navigate);
+            CreateTeam(true, allInfo, allSlots, dispatch, navigate);
         }
     }
 

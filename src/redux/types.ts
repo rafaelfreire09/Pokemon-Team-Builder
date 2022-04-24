@@ -1,13 +1,4 @@
-export type IMyTeam = 
-{
-    id: string
-    name: string
-    editing: boolean
-    allTrue: boolean
-    slot: ISlot[]
-}
-
-export type ISlot = 
+export type Slot = 
 {
     image: string,
     type1: string,
@@ -15,12 +6,21 @@ export type ISlot =
     selected: boolean,
 }
 
-export type IChangeTeamName = 
+export type MyTeam = 
+{
+    id: string
+    name: string
+    editing: boolean
+    allTrue: boolean
+    slot: Slot[]
+}
+
+export type ChangeTeamName = 
 {
     name: string;
 }
 
-export type IAddPokemon = 
+export type AddPokemon = 
 {
     id: number;
     image: string;
@@ -29,18 +29,23 @@ export type IAddPokemon =
     selected: boolean;
 }
 
-export type IRemovePokemon = 
+export type RemovePokemon = 
 {
     id: number;
 }
 
-export type ISelectPokemon = 
+export type SelectPokemon = 
 {
     id: number;
     image: string;
 }
 
-export type IRemoveTeam = 
+export type RemoveTeam = 
 {
     id: string;
+}
+
+export type ClearTeam = 
+{
+    clearName: boolean;
 }
