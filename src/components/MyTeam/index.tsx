@@ -6,8 +6,10 @@ import * as S from './styles';
 import { IProps } from './types';
 
 import PokeSlot from '../PokeSlot';
-import RemOrSubIcon from '../Icons/RemOrSubIcon';
+import RemOrSubIcon from '../Icons/RemoveOrCreateIcon';
 import DeleteOrEditIcon from '../Icons/DeleteOrEditIcon';
+
+import { EIcon } from '../../types/icon'
 
 function MyTeam({ team }: IProps) 
 {
@@ -71,8 +73,6 @@ function MyTeam({ team }: IProps)
                         type="text"  
                         onChange={handleTeamNameInput}
                         value={teamName}
-                        //type="search" 
-                        //onsearch={handleTeamNameInput}  
                     />
                 }
             </S.Title>
@@ -91,13 +91,13 @@ function MyTeam({ team }: IProps)
 
             {team?.name ? 
                 <S.Icons>
-                    <DeleteOrEditIcon type="delete" team={team}/>
-                    <DeleteOrEditIcon type="edit" team={team}/>
+                    <DeleteOrEditIcon type={EIcon.Delete} team={team}/>
+                    <DeleteOrEditIcon type={EIcon.Edit} team={team}/>
                 </S.Icons>
                 :
                 <S.Icons>
-                    <RemOrSubIcon type="remove"/>
-                    <RemOrSubIcon type="create"/>
+                    <RemOrSubIcon type={EIcon.Remove}/>
+                    <RemOrSubIcon type={EIcon.Create}/>
                 </S.Icons>
             }
         </S.Container>

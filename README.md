@@ -1,8 +1,14 @@
 # 👾 Pokemon Team Builder
 
--> Test it yourself: https://pokemon-team-builder-five.vercel.app/
+### 🕹️ Test it yourself: https://pokemon-team-builder-five.vercel.app/
 
-<p> <img src="./github/screen2.png" alt="drawing" style="width:200px; height: 430px;"/> <img src="./github/screen3.png" alt="drawing" style="width:200px; height: 430px;"/> <img src="./github/screen4.png" alt="drawing" style="width:200px; height: 430px;"/> </p>
+---
+
+## 🖥️ Screens:
+
+<img src="./github/screen2.png" alt="drawing" style="width:240px; height: 500px;"/> <img src="./github/screen3.png" alt="drawing" style="width:240px; height: 500px;"/> <img src="./github/screen4.png" alt="drawing" style="width:240px; height: 500px;"/>
+
+---
 
 ## 🛠️ Tecnologies:
 
@@ -11,6 +17,8 @@
 - Styled Components
 - Redux Toolkit
 - Axios
+
+---
 
 ## ⚙️ Installation:
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { IStyledProps } from './types';
+import { StyledProps } from './types';
 
-export const Container = styled.div<IStyledProps>`
+export const Container = styled.div<StyledProps>`
     margin-right: 15px;
 
     width: 40px;

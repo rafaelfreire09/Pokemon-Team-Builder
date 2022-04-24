@@ -87,9 +87,6 @@ function PokeSlot({ idP, full }: IProps)
                 {
                     id: idP,
                     image: imageURL,
-                    type1: type1,
-                    type2: type2,
-                    selected: true
                 }
             )
         );

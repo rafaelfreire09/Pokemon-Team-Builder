@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
-import {v4 as uuidv4} from 'uuid';
+
 import * as S from './styles';
-import { IProps } from './types';
+import { Props } from './types';
 
-import Remove from '../../../assets/remove-icon.png';
-import Choosen from '../../../assets/choosen-icon.png';
-import Create from '../../../assets/add-icon.png';
+import { whatColor, whatIcon } from '../functions';
+import { Create, Remove } from './functions';
 
-import { clearData, removePokemon } from '../../../redux/myTeamSlice';
-import { createNewTeam, editTeam } from '../../../redux/teamsSlice';
-import { IPokemon, ITeam } from '../../../types/pokemon';
-
-function RemOrSubIcon ({ type }: IProps)
+function RemoveOrCreateIcon ({ type }: Props)
 {
-    let navigate = useNavigate();
-
     const [ cursor, setCursor ] = useState('default');
     const [ opacityState, setOpacityState ] = useState("opacity(40%)");
     const [ idSlot, setIdSlot ] = useState(-1);
@@ -25,34 +18,12 @@ function RemOrSubIcon ({ type }: IProps)
     const allInfo = useAppSelector(state => state.myTeam);
 
     const dispatch = useAppDispatch();
+    let navigate = useNavigate();
 
-    function whatIcon (icon: string): any
-    {
-        if(icon === 'remove')
-        {
-            return Remove;
-        } else if (icon === 'create')
-        {
-            return Create;
-        } else
-        {
-            return Choosen;
-        }
-    }
-
-    function whatColor (color: string): string
-    {
-        if(color === 'remove')
-        {
-            return "#f86d5a";
-        } else if (color === 'create')
-        {
-            return "#6068e2";
-        } else 
-        {
-            return "#8FDA58";
-        }
-    }
+    useEffect(() => {
+        checkIfSelected();
+        checkIfFull();
+    }, [allSlots]);
 
     // Received the params to change the visibility of icon
     function whatType (action: string, type: string, activate: boolean, id: number)
@@ -144,92 +115,19 @@ function RemOrSubIcon ({ type }: IProps)
     {
         if ((type === "remove") && (idSlot !== -1))
         {
-            dispatch(
-                removePokemon(
-                    {
-                        id: idSlot,
-                    }
-                )
-            );
+            Remove(idSlot, dispatch);
         }
         
         if ((type === "create") && !allInfo.editing)
         {
-            const id = uuidv4();
-
-            let team: ITeam = 
-            {
-                id: id,
-                name: allInfo.name,
-                pokemons: []
-            };
-
-            for (let i = 0; i < Object.keys(allSlots).length; i++)
-            {
-
-                const pokemon: IPokemon = 
-                {
-                    image: allSlots[i].image,
-                    type1: allSlots[i].type1,
-                    type2: allSlots[i].type2
-                }
-
-                team.pokemons.push(pokemon);
-            }
-
-            dispatch(
-                createNewTeam(
-                    team
-                )
-            );
-
-            dispatch(
-                clearData()
-            );
-
-            navigate('/');
+            Create(false, allInfo, allSlots, dispatch, navigate);
         }
 
         if ((type === "create") && allInfo.editing)
         {
-            let team: ITeam = 
-            {
-                id: allInfo.id,
-                name: allInfo.name,
-                pokemons: []
-            };
-
-            for (let i = 0; i < Object.keys(allSlots).length; i++)
-            {
-
-                const pokemon: IPokemon = 
-                {
-                    image: allSlots[i].image,
-                    type1: allSlots[i].type1,
-                    type2: allSlots[i].type2
-                }
-
-                team.pokemons.push(pokemon);
-            }
-
-            dispatch(
-                editTeam(
-                    team
-                )
-            );
-
-            dispatch(
-                clearData()
-            );
-
-            navigate('/');
+            Create(true, allInfo, allSlots, dispatch, navigate);
         }
     }
-
-    useEffect(() => {
-        checkIfSelected();
-        checkIfFull();
-    }, [allSlots]);
 
     return (
         <S.Container color={whatColor(type)} opacityLevel={opacityState} cursor={cursor} onClick={handleClick}>
@@ -238,4 +136,4 @@ function RemOrSubIcon ({ type }: IProps)
     );
 }
 
-export default RemOrSubIcon;
+export default RemoveOrCreateIcon;

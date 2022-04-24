@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ITeam } from '../types/pokemon';
-import { IRemovePokemon, ISlot, ITeamName } from './types';
+import { IMyTeam, IRemovePokemon, IAddPokemon, IChangeTeamName, ISelectPokemon } from './types';
 
-const initialState = {
+const initialState: IMyTeam = {
     id: '',
     name: 'My team',
     editing: false,
@@ -51,11 +51,11 @@ export const myTeamSlice = createSlice({
     name: 'myteam',
     initialState: initialState,
     reducers: {
-        changeTeamName (state, action:PayloadAction<ITeamName>)
+        changeTeamName (state, action:PayloadAction<IChangeTeamName>)
         {
             state.name = action.payload.name;
         },
-        addPokemon (state, action:PayloadAction<ISlot>)
+        addPokemon (state, action:PayloadAction<IAddPokemon>)
         {
             //const id = action.payload.id;
             let id = -1;
@@ -94,7 +94,7 @@ export const myTeamSlice = createSlice({
                 state.slot[i].selected = true;
             }
         },
-        selectPokemon (state, action:PayloadAction<ISlot>)
+        selectPokemon (state, action:PayloadAction<ISelectPokemon>)
         {
             let id = action.payload.id;
 
