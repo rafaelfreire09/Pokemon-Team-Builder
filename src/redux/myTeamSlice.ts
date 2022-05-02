@@ -159,7 +159,6 @@ export const myTeamSlice = createSlice({
                 state.editing = false;
             }
 
-            state.id = '';
             state.allTrue = true;
 
             for (let i = 0; i < Object.keys(state.slot).length; i++)
