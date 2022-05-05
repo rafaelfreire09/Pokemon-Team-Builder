@@ -8,7 +8,7 @@ export type Slot =
 
 export type MyTeam = 
 {
-    id: string
+    _id: string | undefined | null
     name: string
     editing: boolean
     allTrue: boolean

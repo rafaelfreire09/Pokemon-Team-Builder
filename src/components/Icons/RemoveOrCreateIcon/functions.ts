@@ -1,12 +1,12 @@
+import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 
-import {v4 as uuidv4} from 'uuid';
+import { BASE_URL, CREATE_TEAM_ROUTE, PRE_URL, UPDATE_TEAM_ROUTE } from "../../../constants/backend.constants";
 
 import { MyTeam, Slot } from "../../../redux/types";
 import { Pokemon, Team } from "../../../types/pokemon";
 
 import { clearData, removePokemon } from "../../../redux/myTeamSlice";
-import { createNewTeam, editTeam } from "../../../redux/teamsSlice";
 
 export function ClearSlots (dispatch: any)
 {
@@ -30,21 +30,30 @@ export function RemoveTeam (idSlot: number, dispatch: any)
     );
 }
 
-export function CreateTeam (editing: boolean, allInfo: MyTeam, allSlots: Slot[], dispatch: any, navigate: NavigateFunction)
+function ClearAndRedirect(dispatch: any, navigate: NavigateFunction)
 {
-    let id = '';
+    dispatch(
+        clearData(
+            {
+                clearName: true
+            }
+        )
+    );
+
+    navigate('/');
+}
+
+export async function CreateTeam (editing: boolean, allInfo: MyTeam, allSlots: Slot[], dispatch: any, navigate: NavigateFunction)
+{
+    let id = undefined;
 
     if (editing)
     {
-        id = allInfo.id;
-    } else 
-    {
-        id = uuidv4();
+        id = allInfo._id;
     }
 
     let team: Team = 
     {
-        id: id,
         name: allInfo.name,
         pokemons: []
     };
@@ -64,27 +73,38 @@ export function CreateTeam (editing: boolean, allInfo: MyTeam, allSlots: Slot[],
 
     if (editing)
     {
-        dispatch(
-            editTeam(
+        team._id = allInfo._id;
+
+        try 
+        {
+            const URL = BASE_URL + PRE_URL + UPDATE_TEAM_ROUTE + team._id;
+
+            await axios.put(URL,
                 team
-            )
-        );
+            );
+
+            ClearAndRedirect(dispatch, navigate);
+        } catch (error) 
+        {
+            console.log(error);
+        }
     } else 
     {
-        dispatch(
-            createNewTeam(
+        try 
+        {
+            const URL = BASE_URL + PRE_URL + CREATE_TEAM_ROUTE;
+
+            await axios.post(URL, 
+            {
                 team
-            )
-        );
+            });
+
+            ClearAndRedirect(dispatch, navigate);
+        } catch (error) 
+        {
+            console.log(error);
+        }
     }
 
-    dispatch(
-        clearData(
-            {
-                clearName: true
-            }
-        )
-    );
-
-    navigate('/');
+    
 }

@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/redux-hooks';
+import axios from 'axios';
+
 import * as S from './styles';
+
+import { BASE_URL, GET_TEAMS_ROUTE, PRE_URL } from '../../constants/backend.constants';
 
 import Header from '../../components/Header';
 import MyTeam from '../../components/MyTeam';
@@ -11,18 +15,27 @@ import { Team } from '../../types/pokemon';
 
 function Teams() 
 {
-    const teamsStore = useAppSelector(state => state.teams);
+    //const teamsStore = useAppSelector(state => state.teams);
 
     const [ teams, setTeams ] = useState<Team[]>([]);
     const [ showMessage, setShowMessage ] = useState(true);
 
     useEffect(() => {
-        setTeams(teamsStore);
+        const getData = async () => 
+        {
+            const URL = BASE_URL + PRE_URL + GET_TEAMS_ROUTE;
+
+            const { data } = await axios.get(URL);
+            
+            setTeams(data);
+        }
+
+        getData();
     }, []);
 
-    useEffect(() => {
-        setTeams(teamsStore);
-    }, [teamsStore]);
+    // useEffect(() => {
+    //     setTeams(teamsStore);
+    // }, [teamsStore]);
 
     useEffect(() => {
         checkMessage();
@@ -54,7 +67,7 @@ function Teams()
                     </S.Message>
                 }
                 {
-                    teamsStore.map((element, index) => {
+                    teams.map((element, index) => {
                         return (
                             <S.SingleTeam key={index}>
                                 <MyTeam team={element} />

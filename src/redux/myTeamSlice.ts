@@ -3,7 +3,7 @@ import { Team } from '../types/pokemon';
 import { MyTeam, RemovePokemon, AddPokemon, ChangeTeamName, SelectPokemon, ClearTeam } from './types';
 
 const initialState: MyTeam = {
-    id: '',
+    _id: '',
     name: 'My team',
     editing: false,
     allTrue: true,
@@ -147,7 +147,7 @@ export const myTeamSlice = createSlice({
                 state.slot[i].selected = true;
             }
 
-            state.id = action.payload.id;
+            state._id = action.payload._id;
             state.name = action.payload.name;
             state.editing = true;
         },

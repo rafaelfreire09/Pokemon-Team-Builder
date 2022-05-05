@@ -2,14 +2,18 @@ import axios from "axios";
 
 import { PokemonData, URLList } from './types';
 
-const getURLs = (size: number): URLList[] => 
+import { CATEGORY_POKEAPI_URL, POKEAPI_BASE_URL } from "../constants/general.constants";
+
+const mountURLs = (size: number): URLList[] => 
 {
     let list: URLList[] = [];
 
     for (let i = 1; i <= size; i++)
     {
+        const URLMounted = POKEAPI_BASE_URL + CATEGORY_POKEAPI_URL + `${Math.floor(Math.random() * 900) + 1}`;
+
         const URL = {
-            url: `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 900) + 1}/`
+            url: URLMounted
         };
 
         list.push(URL);
@@ -44,7 +48,7 @@ const getPokeInfo = async (URL: string): Promise<PokemonData> =>
 
 export const CallPokeAPI = async (size: number): Promise<PokemonData[]> =>
 {  
-    const URLList = getURLs(size);
+    const URLList = mountURLs(size);
 
     return Promise.all(
                 URLList.map((element) => 

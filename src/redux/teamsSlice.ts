@@ -18,7 +18,7 @@ export const teamsSlice = createSlice({
         {
             function checkIfNotEqual (team: Team): boolean
             {
-                return team.id !== action.payload.id
+                return team._id !== action.payload.id
             }
 
             const newList = state.filter(team => checkIfNotEqual(team))
@@ -29,7 +29,7 @@ export const teamsSlice = createSlice({
         {
             for (let i = 0; i < Object.keys(state).length; i++)
             {
-                if (state[i].id === action.payload.id)
+                if (state[i]._id === action.payload._id)
                 {
                     state[i].name = action.payload.name;
                     state[i].pokemons = action.payload.pokemons;

@@ -6,6 +6,8 @@ import { PokemonData } from '../../services/types';
 import { CallPokeAPI } from '../../services/api';
 import Pokemon from '../Pokemon';
 
+import { AMOUNT_OF_POKEMONS_TO_RECEIVE } from '../../constants/general.constants';
+
 function ChoosePokemon() 
 {
     const [ firstLoading, setFirstLoading ] = useState(true);
@@ -16,12 +18,10 @@ function ChoosePokemon()
     const [isBottom, setIsBottom] = useState(false);
     const elementRef = useRef<HTMLDivElement>(null);
 
-    const amountToGet = 20;
-
     useEffect(() => {
         const getData = async () => 
         {
-            const list = await CallPokeAPI(amountToGet);
+            const list = await CallPokeAPI(AMOUNT_OF_POKEMONS_TO_RECEIVE);
             
             setPokemonList(list);
             setFirstLoading(false)
@@ -35,7 +35,7 @@ function ChoosePokemon()
         {
             setOthersLoading(true);
             
-            const newList = await CallPokeAPI(amountToGet);
+            const newList = await CallPokeAPI(AMOUNT_OF_POKEMONS_TO_RECEIVE);
             
             const finalList = pokemonList.concat(newList)
             
